@@ -12,6 +12,9 @@
 ## TOOD
 - 自动加载当前目录下的 .env 文件 将程序的配置文件加载到系统内
 - 终端发送通知
+- 字体在 linux 和 macos 一键安装
+  - linux ~/.fonts
+  - macos ~/Library/Fonts
 
 ## Path Struct
 - etc 配置文件目录

@@ -2,7 +2,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-12-03 23:41:53
- # @LastEditTime: 2021-12-05 23:48:15
+ # @LastEditTime: 2021-12-06 00:22:42
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/.boxsrc
@@ -61,8 +61,10 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export DOCKER_REGISTRY_PREFIX=registry.cn-hongkong.aliyuncs.com/imxieke
 
 # 获取代理地址
-export PROXY_ADDR=$(grep 'external-controller' ~/.config/clash/config.yaml | awk -F ': ' '{print $2}')
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=http://127.0.0.1:7890
+if [[ -n "$(command -v clash)" ]]; then
+    export PROXY_ADDR=$(grep 'external-controller' ~/.config/clash/config.yaml | awk -F ': ' '{print $2}')
+    export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=http://127.0.0.1:7890
+fi
 
 # export
 export NVIM_HOME="~/.config/nvim"

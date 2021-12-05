@@ -2,26 +2,29 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-06-21 12:46:09
- # @LastEditTime: 2021-12-04 00:19:22
+ # @LastEditTime: 2021-12-06 00:26:38
  # @LastEditors: Cloudflying
  # @Description: Recovery Dotfile
- # @FilePath: /.boxs/recovery.sh
+ # @FilePath: /.boxs/scripts/recovery.sh
 ### 
 
 # TODO
 # 判断是否为软连接 为当前目录则不进行改变
 DATEFORMAT=$(date "+%Y%m%d-%H%M%S")
 BAK_DIR=~/.config/backup
-CUR_DIR=$(pwd)
+CUR_DIR=~/.boxs
 mkdir -p ${BAK_DIR}/conf
+
+# deps git zsh neovim ca-certificates curl wget cowsay fortune
+# debian /usr/games/cowsay
 
 # 恢复
 if [[ -f ~/.zshrc ]]; then
 	mv ~/.zshrc ${BAK_DIR}/conf/.zshrc-${DATEFORMAT}
-	ln -s ${CUR_DIR}/conf/.zshrc ~/.zshrc
+	ln -sf ~/.boxs/conf/.zshrc ~/.zshrc
 else
 	# 若不存在则创建软连接
-	ln -s ${CUR_DIR}/conf/.zshrc ~/.zshrc
+	ln -sf ~/.boxs/conf/.zshrc ~/.zshrc
 fi
 
 # 修复 /usr/local/share/zsh/ 写入的非安全权限
