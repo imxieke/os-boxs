@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+###
+ # @Author: Cloudflying
+ # @Date: 2021-12-06 00:01:48
+ # @LastEditTime: 2021-12-06 00:08:17
+ # @LastEditors: Cloudflying
+ # @Description: 
+ # @FilePath: /.boxs/bin/all/rm-file-from-all-git-history
+### 
+
+[ -z $1 ] && echo 'type file full path please, example path/to/file or path/to/' && exit 1
+
+# rm file from all commit history
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $@" --prune-empty --tag-name-filter cat -- --all
+
+# force override raw data
+git push origin master --force --all
+git push origin master --force --tags
+
+# clean and recy Recycle space
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
