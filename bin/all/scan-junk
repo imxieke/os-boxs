@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+_junk_files=(
+    .DS_Store
+    .apport-ignore.xml
+    .babel.json
+    .calc_history
+    .dbshell
+    .dbus
+    .esd_auth
+    .evolution
+    .gconf
+    .gconfd
+    .gnome
+    .gnome2_private
+    .goutputstream*
+    .gstreamer-0.10
+    .gtk-bookmarks
+    .lesshst
+    .nautilus
+    .node_repl_history
+    .pulse
+    .pulse-cookie
+    .recently-used.xbel*
+    .rnd
+    .swt
+    .thumbnails
+    .v8flags.*
+    .w3m
+    .wget-hsts
+    .xsel.log
+    .xsession-errors
+    .xsession-errors.old
+    canary_debuglog.txt
+    tmux-client-*.log
+)
+
+_junk_dirs=(
+
+)

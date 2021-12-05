@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# echo git root if in a git repo, otherwise echo pwd
+
+set -e
+
+__maybe_git_root() {
+  local git_root="."
+
+  # check for git root
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    git_root="$(git rev-parse --show-toplevel)"
+
+  printf '%s\n' "$git_root"
+}
+__maybe_git_root

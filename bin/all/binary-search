@@ -1,0 +1,46 @@
+#!/bin/bash
+
+cmdname="$(basename "${BASH_SOURCE[0]}")"
+
+usage() {
+  echo "$cmdname low high script" >&2
+  exit 1
+}
+
+if [[ $# -ne 3 ]]; then
+  usage
+fi
+
+low="$1"
+high="$2"
+script="$3"
+
+if [[ ! $low =~ ^-?[0-9]+$ ]]; then
+  echo "first argument should be an integer" >&2
+  usage
+fi
+
+if [[ ! $high =~ ^-?[0-9]+$ ]]; then
+  echo "second argument should be an integer" >&2
+  usage
+fi
+
+if [[ "$low" -ge "$high" ]]; then
+  echo "first argument should be lower than second argument" >&2
+  usage
+fi
+
+bad="$high"
+while [[ "$low" -lt "$high" ]]; do
+  mid="$(((low + high) / 2))"
+  if bash -c "${script//%/$mid}"; then
+    echo "$mid: good"
+    low="$((mid + 1))"
+  else
+    echo "$mid: bad"
+    high="$mid"
+    bad="$mid"
+  fi
+done
+
+echo "$bad is the bad number"

@@ -1,0 +1,36 @@
+#!/usr/bin/env php -q
+<?php
+
+/**
+ * PHP 实现的一些方便日常的命令
+ * 2020-12-15 15:46:25
+ */
+
+$cmd = isset($argv[1]) ? $argv[1] : '' ;
+$option = isset($argv[2]) ? $argv[2] : '' ;
+
+/**
+ * 将 code --list-extensions 输出的数据转为数组 
+ * 获取管道的数据使用 file_get_contents("php://input")
+ */
+function vscode_extensions2json()
+{
+	$data = file_get_contents("php://stdin");
+	if(strlen($data) != 0)
+	{
+		$data = explode("\n", trim($data));
+		ksort($data);
+		$lists = [
+			'recommendations' => $data
+		];
+		echo json_encode($lists);
+	}
+}
+
+switch ($argv)
+{	
+	default:
+		if(function_exists($cmd)) 
+			$cmd($option);
+		break;
+}

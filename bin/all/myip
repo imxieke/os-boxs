@@ -1,0 +1,5 @@
+#!/bin/sh
+curl ifconfig.me
+echo
+
+# curl -s ipinfo.io/$1

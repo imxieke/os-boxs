@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+###
+ # @Author: Cloudflying
+ # @Date: 2021-12-05 20:59:03
+ # @LastEditTime: 2021-12-05 21:00:17
+ # @LastEditors: Cloudflying
+ # @Description: Convert String to lowercase
+ # @FilePath: /.boxs/bin/all/strtolower
+### 
+
+echo $@ | tr 'A-Z' 'a-z'

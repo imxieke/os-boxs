@@ -1,0 +1,1 @@
+{"virtualbox":{"/data":{"guestpath":"/data","hostpath":"/Users/imxieke/Code/Project/packages","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/imxieke/.boxs/vagrant/archlinux","disabled":false,"__vagrantfile":true}}}

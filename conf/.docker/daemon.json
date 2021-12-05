@@ -1,0 +1,1 @@
+{"builder":{"gc":{"defaultKeepStorage":"64GB","enabled":true}},"experimental":true,"features":{"buildkit":true},"registry-mirrors":["https://22bvsrc3.mirror.aliyuncs.com"]}

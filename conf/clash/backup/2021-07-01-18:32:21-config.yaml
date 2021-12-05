@@ -1,0 +1,1868 @@
+#!MANAGED-CONFIG https://v2.mugua-sub.com/link/lRDJWF9GRrvQ4AEd?clash=1&dns=0
+
+#---------------------------------------------------#
+## 上次更新于：2021-07-01 06:32:17
+#---------------------------------------------------#
+
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: '0.0.0.0:9090'
+secret: ''
+proxies:
+  -
+    name: 'V1-俄罗斯01 中继A | x1.2'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63019
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-俄罗斯01 中继B | x1.2'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63019
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-俄罗斯01 中继C | x1.2'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63019
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-俄罗斯01 中继D | x1.2'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63019
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-俄罗斯01 中继E | x1.2'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63019
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-台湾02 中继A | NF'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63025
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-台湾02 中继B | NF'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63025
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-台湾02 中继C | NF\t"
+    type: vmess
+    server: in03.ddns168.com
+    port: 63025
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-台湾02 中继D | NF\t"
+    type: vmess
+    server: in04.ddns168.com
+    port: 63025
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-台湾02 中继E | NF'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63025
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-新加坡04 中继A | NF 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63045
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-新加坡04 中继B | NF 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63045
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-新加坡04 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63045
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-新加坡04 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63045
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-新加坡04 中继E | NF 1.5'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63045
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-新加坡11 AWS直连 速度随缘 | 80端口 | 今日头条免流'
+    type: vmess
+    server: mugua-sg11-direct.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: mon.snssdk.com
+  -
+    name: 'V1-新加坡11 AWS直连AGA 速度随缘 | 80端口 | 今日头条免流'
+    type: vmess
+    server: sg11-aga.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: mon.snssdk.com
+  -
+    name: 'V1-日本01 中继A | NF 1.5'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63012
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本01 中继B | NF 1.5'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63012
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本01 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63012
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本01 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63012
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本01 中继E | NF 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63012
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本02 中继A | NF 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63017
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本02 中继B | NF 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63017
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本02 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63017
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本02 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63017
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本02 中继E | NF 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63017
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本03 中继A | NF 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63038
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本03 中继B | NF 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63038
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本03 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63038
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本03 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63038
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本03 中继E | NF 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63038
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-日本11 AWS直连 速度随缘 | 80端口 | 微博免流'
+    type: vmess
+    server: mugua-jp11-direct.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: new.vip.weibo.cn
+  -
+    name: 'V1-日本11 AWS直连AGA 速度随缘 | 80端口 | 微博免流'
+    type: vmess
+    server: jp11-aga.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: new.vip.weibo.cn
+  -
+    name: 'V1-澳洲11 AWS AGA加速 | 80端口 | 速度随缘 | 微博免流'
+    type: vmess
+    server: au11-aga.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: new.vip.weibo.cn
+  -
+    name: 'V1-澳洲11 AWS直连 | 80端口 | 速度随缘 | 微博免流'
+    type: vmess
+    server: mugua-au11-direct.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: new.vip.weibo.cn
+  -
+    name: 'V1-美国01 中继A | NF 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63014
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-美国01 中继B | NF 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63014
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-美国01 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63014
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-美国01 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63014
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-美国01 中继E | NF 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63014
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-韩国01 中继A | x1.5'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63056
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-韩国01 中继B | x1.5'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63056
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-韩国01 中继C | x1.5'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63056
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-韩国01 中继D | x1.5'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63056
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-韩国01 中继E | x1.5'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63056
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-韩国11 AWS AGA加速 | 80端口 | 微博免流'
+    type: vmess
+    server: kr11-aga.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: new.vip.weibo.cn
+  -
+    name: 'V1-韩国11 AWS直连 | 80端口 | 微博免流'
+    type: vmess
+    server: mugua-kr11-direct.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: new.vip.weibo.cn
+  -
+    name: 'V1-香港01 中继A | NF'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63055
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港01 中继B | NF'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63055
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港01 中继C | NF'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63055
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港01 中继D | NF'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63055
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港01 中继E | NF'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63055
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港02 中继A | NF'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63050
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港02 中继B | NF'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63050
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港02 中继C | NF'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63050
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-香港02 中继D | NF\t"
+    type: vmess
+    server: in04.ddns168.com
+    port: 63050
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-香港02 中继E | NF\t"
+    type: vmess
+    server: in05.ddns168.com
+    port: 63050
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-香港03 中继A | NF\t"
+    type: vmess
+    server: in01.ddns168.com
+    port: 63031
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-香港03 中继B | NF\t"
+    type: vmess
+    server: in02.ddns168.com
+    port: 63031
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港03 中继C | NF'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63031
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-香港03 中继D | NF\t"
+    type: vmess
+    server: in04.ddns168.com
+    port: 63031
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V1-香港03 中继E | NF\t"
+    type: vmess
+    server: in05.ddns168.com
+    port: 63031
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V1-香港11 AWS直连 | 80端口 | 今日头条免流'
+    type: vmess
+    server: mugua-hk11-direct.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: mon.snssdk.com
+  -
+    name: 'V1-香港11 AWS直连AGA加速 | 80端口 | 今日头条免流'
+    type: vmess
+    server: a07a2eb82cfe636d2.awsglobalaccelerator.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: mon.snssdk.com
+  -
+    name: 'V1-香港12 AWS直连 | 80端口 | 速度随缘 | 今日头条免流'
+    type: vmess
+    server: mugua-hk12-direct.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: mon.snssdk.com
+  -
+    name: 'V1-香港12 AWS直连AGA加速 | 80端口 | 速度随缘 | 今日头条免流'
+    type: vmess
+    server: hk12-aga.node168.com
+    port: 80
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: mon.snssdk.com
+  -
+    name: 'V2-印度01 中继A | 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63051
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-印度01 中继B | 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63051
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-印度01 中继C | 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63051
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-印度01 中继D | 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63051
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-印度01 中继E | 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63051
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-台湾01 中继A | NF'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63054
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-台湾01 中继B | NF'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63054
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-台湾01 中继C | NF'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63054
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-台湾01 中继D | NF'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63054
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-台湾01 中继E | NF'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63054
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-巴西01 中继A'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63041
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 3
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-巴西01 中继B'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63041
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 3
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-巴西01 中继C'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63041
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 3
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-巴西01 中继D'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63041
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 3
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-巴西01 中继E'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63041
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 3
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡01 中继A | NF 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63013
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 1
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡01 中继B | NF 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63013
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 1
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡01 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63013
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 1
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡01 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63013
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 1
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡01 中继E | NF 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63013
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 1
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡02 中继A | 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63052
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡02 中继B | 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63052
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡02 中继C | 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63052
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡02 中继D | 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63052
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-新加坡02 中继E | 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63052
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-美国03 中继A | NF 1.5x'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63018
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-美国03 中继B | NF 1.5x'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63018
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-美国03 中继C | NF 1.5x'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63018
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-美国03 中继D | NF 1.5x'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63018
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-美国03 中继E | NF 1.5x'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63018
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-阿根廷01 中继A | 冷门 低速 x10'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63029
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-阿根廷01 中继C | 冷门 低速 x10'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63029
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-阿根廷01 中继D | 冷门 低速 x10'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63029
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港04 中继A | NF'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63053
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港04 中继B | NF'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63053
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港04 中继C | NF'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63053
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港04 中继D | NF'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63053
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: "V2-香港04 中继E | NF\t"
+    type: vmess
+    server: in05.ddns168.com
+    port: 63053
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /cctv
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HGC01 中继A'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63027
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HGC01 中继B'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63027
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HGC01 中继C'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63027
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HGC01 中继D'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63027
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HGC01 中继E'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63027
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HKT01 中继A'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63033
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HKT01 中继B'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63033
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HKT01 中继C'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63033
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HKT01 中继D'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63033
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-香港HKT01 中继E'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63033
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-马来西亚01 中继A | x1.5'
+    type: vmess
+    server: in01.ddns168.com
+    port: 63040
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-马来西亚01 中继B | x1.5'
+    type: vmess
+    server: in02.ddns168.com
+    port: 63040
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-马来西亚01 中继C | x1.5'
+    type: vmess
+    server: in03.ddns168.com
+    port: 63040
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-马来西亚01 中继D | x1.5'
+    type: vmess
+    server: in04.ddns168.com
+    port: 63040
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V2-马来西亚01 中继E | x1.5'
+    type: vmess
+    server: in05.ddns168.com
+    port: 63040
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+    network: ws
+    ws-path: /hls
+    ws-headers:
+      Host: cdn.bootcdn.net
+  -
+    name: 'V3-IEPL专线 粤新03 | 10x'
+    type: vmess
+    server: iplc01.nbsd.ddns168.com
+    port: 3043
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+  -
+    name: 'V3-IEPL专线 粤日04 | 10x'
+    type: vmess
+    server: iplc01.nbsd.ddns168.com
+    port: 3013
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+  -
+    name: 'V3-IEPL专线 粤港03 | 10x'
+    type: vmess
+    server: iplc01.nbsd.ddns168.com
+    port: 3023
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+  -
+    name: 'V3-IEPL专线 粤美02 | 10x'
+    type: vmess
+    server: iplc01.nbsd.ddns168.com
+    port: 3033
+    uuid: ca8fd854-43d5-3ea3-9210-0fe89630a427
+    alterId: 2
+    cipher: auto
+    udp: true
+proxy-groups:
+  -
+    name: '🍃 Proxies'
+    type: select
+    proxies:
+      - '⭐️ Auto'
+      - 'V1-俄罗斯01 中继A | x1.2'
+      - 'V1-俄罗斯01 中继B | x1.2'
+      - 'V1-俄罗斯01 中继C | x1.2'
+      - 'V1-俄罗斯01 中继D | x1.2'
+      - 'V1-俄罗斯01 中继E | x1.2'
+      - 'V1-台湾02 中继A | NF'
+      - 'V1-台湾02 中继B | NF'
+      - "V1-台湾02 中继C | NF\t"
+      - "V1-台湾02 中继D | NF\t"
+      - 'V1-台湾02 中继E | NF'
+      - 'V1-新加坡04 中继A | NF 1.5x'
+      - 'V1-新加坡04 中继B | NF 1.5x'
+      - 'V1-新加坡04 中继C | NF 1.5x'
+      - 'V1-新加坡04 中继D | NF 1.5x'
+      - 'V1-新加坡04 中继E | NF 1.5'
+      - 'V1-新加坡11 AWS直连 速度随缘 | 80端口 | 今日头条免流'
+      - 'V1-新加坡11 AWS直连AGA 速度随缘 | 80端口 | 今日头条免流'
+      - 'V1-日本01 中继A | NF 1.5'
+      - 'V1-日本01 中继B | NF 1.5'
+      - 'V1-日本01 中继C | NF 1.5x'
+      - 'V1-日本01 中继D | NF 1.5x'
+      - 'V1-日本01 中继E | NF 1.5x'
+      - 'V1-日本02 中继A | NF 1.5x'
+      - 'V1-日本02 中继B | NF 1.5x'
+      - 'V1-日本02 中继C | NF 1.5x'
+      - 'V1-日本02 中继D | NF 1.5x'
+      - 'V1-日本02 中继E | NF 1.5x'
+      - 'V1-日本03 中继A | NF 1.5x'
+      - 'V1-日本03 中继B | NF 1.5x'
+      - 'V1-日本03 中继C | NF 1.5x'
+      - 'V1-日本03 中继D | NF 1.5x'
+      - 'V1-日本03 中继E | NF 1.5x'
+      - 'V1-日本11 AWS直连 速度随缘 | 80端口 | 微博免流'
+      - 'V1-日本11 AWS直连AGA 速度随缘 | 80端口 | 微博免流'
+      - 'V1-澳洲11 AWS AGA加速 | 80端口 | 速度随缘 | 微博免流'
+      - 'V1-澳洲11 AWS直连 | 80端口 | 速度随缘 | 微博免流'
+      - 'V1-美国01 中继A | NF 1.5x'
+      - 'V1-美国01 中继B | NF 1.5x'
+      - 'V1-美国01 中继C | NF 1.5x'
+      - 'V1-美国01 中继D | NF 1.5x'
+      - 'V1-美国01 中继E | NF 1.5x'
+      - 'V1-韩国01 中继A | x1.5'
+      - 'V1-韩国01 中继B | x1.5'
+      - 'V1-韩国01 中继C | x1.5'
+      - 'V1-韩国01 中继D | x1.5'
+      - 'V1-韩国01 中继E | x1.5'
+      - 'V1-韩国11 AWS AGA加速 | 80端口 | 微博免流'
+      - 'V1-韩国11 AWS直连 | 80端口 | 微博免流'
+      - 'V1-香港01 中继A | NF'
+      - 'V1-香港01 中继B | NF'
+      - 'V1-香港01 中继C | NF'
+      - 'V1-香港01 中继D | NF'
+      - 'V1-香港01 中继E | NF'
+      - 'V1-香港02 中继A | NF'
+      - 'V1-香港02 中继B | NF'
+      - 'V1-香港02 中继C | NF'
+      - "V1-香港02 中继D | NF\t"
+      - "V1-香港02 中继E | NF\t"
+      - "V1-香港03 中继A | NF\t"
+      - "V1-香港03 中继B | NF\t"
+      - 'V1-香港03 中继C | NF'
+      - "V1-香港03 中继D | NF\t"
+      - "V1-香港03 中继E | NF\t"
+      - 'V1-香港11 AWS直连 | 80端口 | 今日头条免流'
+      - 'V1-香港11 AWS直连AGA加速 | 80端口 | 今日头条免流'
+      - 'V1-香港12 AWS直连 | 80端口 | 速度随缘 | 今日头条免流'
+      - 'V1-香港12 AWS直连AGA加速 | 80端口 | 速度随缘 | 今日头条免流'
+      - 'V2-印度01 中继A | 1.5x'
+      - 'V2-印度01 中继B | 1.5x'
+      - 'V2-印度01 中继C | 1.5x'
+      - 'V2-印度01 中继D | 1.5x'
+      - 'V2-印度01 中继E | 1.5x'
+      - 'V2-台湾01 中继A | NF'
+      - 'V2-台湾01 中继B | NF'
+      - 'V2-台湾01 中继C | NF'
+      - 'V2-台湾01 中继D | NF'
+      - 'V2-台湾01 中继E | NF'
+      - 'V2-巴西01 中继A'
+      - 'V2-巴西01 中继B'
+      - 'V2-巴西01 中继C'
+      - 'V2-巴西01 中继D'
+      - 'V2-巴西01 中继E'
+      - 'V2-新加坡01 中继A | NF 1.5x'
+      - 'V2-新加坡01 中继B | NF 1.5x'
+      - 'V2-新加坡01 中继C | NF 1.5x'
+      - 'V2-新加坡01 中继D | NF 1.5x'
+      - 'V2-新加坡01 中继E | NF 1.5x'
+      - 'V2-新加坡02 中继A | 1.5x'
+      - 'V2-新加坡02 中继B | 1.5x'
+      - 'V2-新加坡02 中继C | 1.5x'
+      - 'V2-新加坡02 中继D | 1.5x'
+      - 'V2-新加坡02 中继E | 1.5x'
+      - 'V2-美国03 中继A | NF 1.5x'
+      - 'V2-美国03 中继B | NF 1.5x'
+      - 'V2-美国03 中继C | NF 1.5x'
+      - 'V2-美国03 中继D | NF 1.5x'
+      - 'V2-美国03 中继E | NF 1.5x'
+      - 'V2-阿根廷01 中继A | 冷门 低速 x10'
+      - 'V2-阿根廷01 中继C | 冷门 低速 x10'
+      - 'V2-阿根廷01 中继D | 冷门 低速 x10'
+      - 'V2-香港04 中继A | NF'
+      - 'V2-香港04 中继B | NF'
+      - 'V2-香港04 中继C | NF'
+      - 'V2-香港04 中继D | NF'
+      - "V2-香港04 中继E | NF\t"
+      - 'V2-香港HGC01 中继A'
+      - 'V2-香港HGC01 中继B'
+      - 'V2-香港HGC01 中继C'
+      - 'V2-香港HGC01 中继D'
+      - 'V2-香港HGC01 中继E'
+      - 'V2-香港HKT01 中继A'
+      - 'V2-香港HKT01 中继B'
+      - 'V2-香港HKT01 中继C'
+      - 'V2-香港HKT01 中继D'
+      - 'V2-香港HKT01 中继E'
+      - 'V2-马来西亚01 中继A | x1.5'
+      - 'V2-马来西亚01 中继B | x1.5'
+      - 'V2-马来西亚01 中继C | x1.5'
+      - 'V2-马来西亚01 中继D | x1.5'
+      - 'V2-马来西亚01 中继E | x1.5'
+      - 'V3-IEPL专线 粤新03 | 10x'
+      - 'V3-IEPL专线 粤日04 | 10x'
+      - 'V3-IEPL专线 粤港03 | 10x'
+      - 'V3-IEPL专线 粤美02 | 10x'
+  -
+    name: '🍂 Domestic'
+    type: select
+    proxies:
+      - DIRECT
+      - '🍃 Proxies'
+  -
+    name: '☁️ Others'
+    type: select
+    proxies:
+      - '🍃 Proxies'
+      - '🍂 Domestic'
+  -
+    name: '⭐️ Auto'
+    type: url-test
+    proxies:
+      - 'V1-俄罗斯01 中继A | x1.2'
+      - 'V1-俄罗斯01 中继B | x1.2'
+      - 'V1-俄罗斯01 中继C | x1.2'
+      - 'V1-俄罗斯01 中继D | x1.2'
+      - 'V1-俄罗斯01 中继E | x1.2'
+      - 'V1-台湾02 中继A | NF'
+      - 'V1-台湾02 中继B | NF'
+      - "V1-台湾02 中继C | NF\t"
+      - "V1-台湾02 中继D | NF\t"
+      - 'V1-台湾02 中继E | NF'
+      - 'V1-新加坡04 中继A | NF 1.5x'
+      - 'V1-新加坡04 中继B | NF 1.5x'
+      - 'V1-新加坡04 中继C | NF 1.5x'
+      - 'V1-新加坡04 中继D | NF 1.5x'
+      - 'V1-新加坡04 中继E | NF 1.5'
+      - 'V1-新加坡11 AWS直连 速度随缘 | 80端口 | 今日头条免流'
+      - 'V1-新加坡11 AWS直连AGA 速度随缘 | 80端口 | 今日头条免流'
+      - 'V1-日本01 中继A | NF 1.5'
+      - 'V1-日本01 中继B | NF 1.5'
+      - 'V1-日本01 中继C | NF 1.5x'
+      - 'V1-日本01 中继D | NF 1.5x'
+      - 'V1-日本01 中继E | NF 1.5x'
+      - 'V1-日本02 中继A | NF 1.5x'
+      - 'V1-日本02 中继B | NF 1.5x'
+      - 'V1-日本02 中继C | NF 1.5x'
+      - 'V1-日本02 中继D | NF 1.5x'
+      - 'V1-日本02 中继E | NF 1.5x'
+      - 'V1-日本03 中继A | NF 1.5x'
+      - 'V1-日本03 中继B | NF 1.5x'
+      - 'V1-日本03 中继C | NF 1.5x'
+      - 'V1-日本03 中继D | NF 1.5x'
+      - 'V1-日本03 中继E | NF 1.5x'
+      - 'V1-日本11 AWS直连 速度随缘 | 80端口 | 微博免流'
+      - 'V1-日本11 AWS直连AGA 速度随缘 | 80端口 | 微博免流'
+      - 'V1-澳洲11 AWS AGA加速 | 80端口 | 速度随缘 | 微博免流'
+      - 'V1-澳洲11 AWS直连 | 80端口 | 速度随缘 | 微博免流'
+      - 'V1-美国01 中继A | NF 1.5x'
+      - 'V1-美国01 中继B | NF 1.5x'
+      - 'V1-美国01 中继C | NF 1.5x'
+      - 'V1-美国01 中继D | NF 1.5x'
+      - 'V1-美国01 中继E | NF 1.5x'
+      - 'V1-韩国01 中继A | x1.5'
+      - 'V1-韩国01 中继B | x1.5'
+      - 'V1-韩国01 中继C | x1.5'
+      - 'V1-韩国01 中继D | x1.5'
+      - 'V1-韩国01 中继E | x1.5'
+      - 'V1-韩国11 AWS AGA加速 | 80端口 | 微博免流'
+      - 'V1-韩国11 AWS直连 | 80端口 | 微博免流'
+      - 'V1-香港01 中继A | NF'
+      - 'V1-香港01 中继B | NF'
+      - 'V1-香港01 中继C | NF'
+      - 'V1-香港01 中继D | NF'
+      - 'V1-香港01 中继E | NF'
+      - 'V1-香港02 中继A | NF'
+      - 'V1-香港02 中继B | NF'
+      - 'V1-香港02 中继C | NF'
+      - "V1-香港02 中继D | NF\t"
+      - "V1-香港02 中继E | NF\t"
+      - "V1-香港03 中继A | NF\t"
+      - "V1-香港03 中继B | NF\t"
+      - 'V1-香港03 中继C | NF'
+      - "V1-香港03 中继D | NF\t"
+      - "V1-香港03 中继E | NF\t"
+      - 'V1-香港11 AWS直连 | 80端口 | 今日头条免流'
+      - 'V1-香港11 AWS直连AGA加速 | 80端口 | 今日头条免流'
+      - 'V1-香港12 AWS直连 | 80端口 | 速度随缘 | 今日头条免流'
+      - 'V1-香港12 AWS直连AGA加速 | 80端口 | 速度随缘 | 今日头条免流'
+      - 'V2-印度01 中继A | 1.5x'
+      - 'V2-印度01 中继B | 1.5x'
+      - 'V2-印度01 中继C | 1.5x'
+      - 'V2-印度01 中继D | 1.5x'
+      - 'V2-印度01 中继E | 1.5x'
+      - 'V2-台湾01 中继A | NF'
+      - 'V2-台湾01 中继B | NF'
+      - 'V2-台湾01 中继C | NF'
+      - 'V2-台湾01 中继D | NF'
+      - 'V2-台湾01 中继E | NF'
+      - 'V2-巴西01 中继A'
+      - 'V2-巴西01 中继B'
+      - 'V2-巴西01 中继C'
+      - 'V2-巴西01 中继D'
+      - 'V2-巴西01 中继E'
+      - 'V2-新加坡01 中继A | NF 1.5x'
+      - 'V2-新加坡01 中继B | NF 1.5x'
+      - 'V2-新加坡01 中继C | NF 1.5x'
+      - 'V2-新加坡01 中继D | NF 1.5x'
+      - 'V2-新加坡01 中继E | NF 1.5x'
+      - 'V2-新加坡02 中继A | 1.5x'
+      - 'V2-新加坡02 中继B | 1.5x'
+      - 'V2-新加坡02 中继C | 1.5x'
+      - 'V2-新加坡02 中继D | 1.5x'
+      - 'V2-新加坡02 中继E | 1.5x'
+      - 'V2-美国03 中继A | NF 1.5x'
+      - 'V2-美国03 中继B | NF 1.5x'
+      - 'V2-美国03 中继C | NF 1.5x'
+      - 'V2-美国03 中继D | NF 1.5x'
+      - 'V2-美国03 中继E | NF 1.5x'
+      - 'V2-阿根廷01 中继A | 冷门 低速 x10'
+      - 'V2-阿根廷01 中继C | 冷门 低速 x10'
+      - 'V2-阿根廷01 中继D | 冷门 低速 x10'
+      - 'V2-香港04 中继A | NF'
+      - 'V2-香港04 中继B | NF'
+      - 'V2-香港04 中继C | NF'
+      - 'V2-香港04 中继D | NF'
+      - "V2-香港04 中继E | NF\t"
+      - 'V2-香港HGC01 中继A'
+      - 'V2-香港HGC01 中继B'
+      - 'V2-香港HGC01 中继C'
+      - 'V2-香港HGC01 中继D'
+      - 'V2-香港HGC01 中继E'
+      - 'V2-香港HKT01 中继A'
+      - 'V2-香港HKT01 中继B'
+      - 'V2-香港

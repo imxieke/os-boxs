@@ -1,0 +1,90 @@
+{
+	"show_detail": true,
+	"servers": [
+		{
+			"name": "example-password",
+			"ip": "example-password",
+			"port": 22,
+			"user": "example-password",
+			"password": "example-password",
+			"method": "example-password",
+			"key": "",
+			"options": {
+				"ServerAliveInterval": 20
+			},
+			"alias": "example",
+			"log": {
+				"enable": false,
+				"filename": "",
+				"mode": ""
+			}
+		},
+		{
+			"name": "Apple",
+			"ip": "1.2.1.1",
+			"port": 11,
+			"user": "root",
+			"password": "passwd",
+			"method": "key",
+			"key": "",
+			"options": {
+				"ServerAliveInterval": 30
+			},
+			"alias": "",
+			"log": {
+				"enable": false,
+				"filename": "",
+				"mode": ""
+			}
+		}
+	],
+	"groups": [
+		{
+			"group_name": "your group name",
+			"prefix": "a",
+			"servers": [
+				{
+					"name": "example1",
+					"ip": "example1",
+					"port": 22,
+					"user": "example1",
+					"password": "example1",
+					"method": "password",
+					"key": "",
+					"options": {
+						"ServerAliveInterval": 30
+					},
+					"alias": "",
+					"log": {
+						"enable": false,
+						"filename": "",
+						"mode": ""
+					}
+				},
+				{
+					"name": "example2",
+					"ip": "example2",
+					"port": 22,
+					"user": "example2",
+					"password": "example2",
+					"method": "password",
+					"key": "",
+					"options": {
+						"ServerAliveInterval": 30
+					},
+					"alias": "",
+					"log": {
+						"enable": false,
+						"filename": "",
+						"mode": ""
+					}
+				}
+			],
+			"collapse": false,
+			"proxy": null
+		}
+	],
+	"options": {
+		"ServerAliveInterval": 30
+	}
+}

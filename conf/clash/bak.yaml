@@ -1,0 +1,400 @@
+## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
+## ！！！只有这份文件的端口设置会随ClashX启动生效
+#---------------------------------------------------#
+mixed-port: 7890    # 混合端口
+
+# RESTful API for clash
+external-controller: 127.0.0.1:9090
+
+# Linux 和 macOS 的 redir 代理端口 (如需使用此功能，请取消注释)
+# redir-port: 7892
+
+# 允许局域网的连接（可用来共享代理）
+allow-lan: true
+
+# Only applicable when setting allow-lan to true
+# "*": bind all IP addresses
+# 192.168.122.11: bind a single IPv4 address
+# "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
+# bind-address: "*"
+
+mode: rule # global rule direct script
+
+# 日志记录等级
+log-level: debug # silent info warning error  debug 级别越高日志输出量越大，越倾向于调试 大小先后排序
+
+# # 实验性功能 hosts, 支持通配符 (例如 *.clash.dev 甚至 *.foo.*.example.com)
+# # 静态的域名 比 通配域名 具有更高的优先级 (foo.example.com 优先于 *.example.com)
+# # 注意: hosts 在 fake-ip 模式下不生效
+hosts:
+  # '*.loca': 127.0.0.1
+  # '*.clash.dev': 127.0.0.1
+#   'alpha.clash.dev': '::1'
+
+dns:
+  enable: true
+  ipv6: false
+  # listen: 0.0.0.0:53
+  # enhanced-mode: redir-host # 或 fake-ip
+  # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
+  # fake-ip-filter: # fake-ip 白名单列表
+  #   - '*.lan'
+  #   - localhost.ptlogin2.qq.com
+
+  # 8.8.8.8 https (dot doh tcp tls)
+  nameserver:
+    - https://cloudflare-dns.com/dns-query
+    # - https://dns.twnic.tw/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://doh.360.cn/dns-query
+    - 114.114.114.114
+    - 223.5.5.5
+    # - https://223.5.5.5/dns-query
+    # - https://223.6.6.6/dns-query
+    # - https://doh.pub/dns-query
+    # - https://dns.adguard.com/dns-query
+    # - https://doh.dns.sb/dns-query
+    # - https://dns.google/dns-query
+    # - https://dns.quad9.net/dns-query
+    # - https://dns.rubyfish.cn/dns-query
+    # - https://doh.tiar.app/dns-query
+    # - https://doh.tiarap.org/dns-query
+    # - https://doh.opendns.com/dns-query
+    # - 1.2.4.8
+    # - tls://13800000000.rubyfish.cn:853
+    #- https://13800000000.rubyfish.cn/
+
+  # 与 nameserver 内的服务器列表同时发起请求，当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。
+  # fallback: 
+    # - 8.8.8.8
+    # - 1.1.1.1
+    # - https://cloudflare-dns.com/dns-query
+    # - tls://dns.google:853
+    # - tls://1.0.0.1:853
+    # - tls://dns.rubyfish.cn:853
+    # - tls://13800000000.rubyfish.cn:853
+
+  # fallback-filter:
+    # 默认
+    # geoip: true 
+    # 在这个网段内的 IP 地址会被考虑为被污染的 IP
+    # ipcidr: 
+      # - 240.0.0.0/4
+
+# clash DNS 请求逻辑：
+# (1) 当访问一个域名时， nameserver 与 fallback 列表内的所有服务器并发请求，得到域名对应的 IP 地址。
+# (2) clash 将选取 nameserver 列表内，解析最快的结果。
+# (3) 若解析结果中，IP 地址属于 国外，那么 clash 将选择 fallback 列表内，解析最快的结果。
+#
+# 因此，我在 nameserver 和 fallback 内都放置了无污染、解析速度较快的国内 DNS 服务器，以达到最快的解析速度。
+# 但是 fallback 列表内服务器会用在解析境外网站，为了结果绝对无污染，我仅保留了支持 DoT/DoH 的两个服务器。
+#
+# 注意：
+# (1) 如果您为了确保 DNS 解析结果无污染，请仅保留列表内以 tls:// 开头的 DNS 服务器，但是通常对于国内没有太大必要。
+# (2) 如果您不在乎可能解析到污染的结果，更加追求速度。请将 nameserver 列表的服务器插入至 fallback 列表内，并移除重复项。
+
+###############################################################
+#           代理节点 配置分割线
+# Shadowsocks 支持的加密方式:
+#   aes-128-gcm aes-192-gcm aes-256-gcm
+#   aes-128-cfb aes-192-cfb aes-256-cfb
+#   aes-128-ctr aes-192-ctr aes-256-ctr
+#   rc4-md5 chacha20-ietf xchacha20
+#   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+proxies:
+  - name: "qqhk"                      # 软件显示的节点名字
+    type: ss                          # 代理类型
+    server: qq-hk-2.node.xieke.org    # 服务器IP
+    port: 6443                        #  端口号
+    cipher: aes-256-gcm               # 加密方法
+    password: "xiaoke"                # SS密码
+    # udp: true
+
+  - name: "singapore"                      # 软件显示的节点名字
+    type: ss                          # 代理类型
+    server: 129.226.156.207           # 服务器IP
+    port: 6443                        #  端口号
+    cipher: aes-256-gcm               # 加密方法
+    password: "xiaoke"                # SS密码
+    # udp: true
+
+  - name: "qqsh5m"                  # 软件显示的节点名字
+    type: ss                        # 代理类型
+    server: 152.136.127.32          # 服务器IP
+    port: 6443                      #  端口号
+    cipher: aes-256-gcm             # 加密方法
+    password: "xiaoke"              # SS密码
+    # udp: true
+
+  - name: "lasvegas"                  # 软件显示的节点名字
+    type: ss                        # 代理类型
+    server: 209.141.38.169          # 服务器IP
+    port: 6443                      #  端口号
+    cipher: aes-256-gcm             # 加密方法
+    password: "xiaoke"              # SS密码
+    # udp: true
+
+  - name: "japan-iij"                  # 软件显示的节点名字
+    type: ss                        # 代理类型
+    server: 45.159.51.60          # 服务器IP
+    port: 6444                      #  端口号
+    cipher: aes-256-gcm             # 加密方法
+    password: "xiaoke"              # SS密码
+    # udp: true
+
+# 代理组策略
+# url-test url-test 通过指定的 URL 测试并选择延迟最低的节点
+# url http://www.gstatic.com/generate_204 http://connect.rom.miui.com/generate_204 http://wifi.vivo.com.cn/generate_204 http://g.cn/generate_204
+proxy-groups:
+  - name: "auto"
+    type: url-test
+    proxies:
+      - "DIRECT"
+      - "qqsh5m"
+      - "qqhk"
+    url: 'http://www.baidu.com'
+    # url: 'http://connect.rom.miui.com/generate_204'
+    interval: 300
+
+  # 针对海外节点
+  - name: "oversea"
+    type: select
+    proxies:
+      # - "japan-iij"
+      # - "singapore"
+      - "qqhk"
+      # - "lasvegas"
+
+  - name: "china"
+    type: select
+    proxies:
+      - "qqsh5m"
+
+  # - name: "fallback-auto"
+  #   type: fallback
+  #   proxies:
+  #     - "qqhk"
+  #     - "qqsh5m"
+  #   url: 'http://connect.rom.miui.com/generate_204'
+  #   interval: 300
+
+
+# 规则解释
+# DOMAIN-SUFFIX：域名后缀匹配 DOMAIN：域名匹配 DOMAIN-KEYWORD：域名关键字匹配 IP-CIDR：IP段匹配 SRC-IP-CIDR：源IP段匹配 GEOIP：GEOIP数据库(国家代码)
+# 匹配 DST-PORT：目标端口匹配 SRC-PORT：源端口匹配 MATCH：全匹配（一般放在最后） PROCESS-NAME：源进程名匹配 版本 > v0.11.5 RULE-SET：Rule Provider规则匹配
+rules:
+
+  # DNSPod Public DNS+
+  - IP-CIDR,119.28.28.28/32,DIRECT
+
+  # Custom
+  # - DOMAIN-SUFFIX,ip.sb,oversea
+  # - DOMAIN-SUFFIX,baidu.com,DIRECT
+  # - DOMAIN-SUFFIX,bdstatic.com,DIRECT
+
+  # LAN optional param "no-resolve" for IP rules (GEOIP, IP-CIDR, IP-CIDR6)
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,17.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+
+  # Adblock
+  - DOMAIN-SUFFIX,ad.com,REJECT
+  - DOMAIN,hm.baidu.com,REJECT
+  - DOMAIN,google-analytics.com,REJECT
+  - DOMAIN,consent-or.trustarc.com,REJECT
+  - DOMAIN,mi.gdt.qq.com,REJECT # 腾讯收集广告
+
+  # Skip
+  - DOMAIN,captive.apple.com,DIRECT
+  - DOMAIN-SUFFIX,example.com,DIRECT
+  - DOMAIN-SUFFIX,akamaiedge.net,DIRECT
+  - DOMAIN-SUFFIX,akamaitechnologies.com,DIRECT
+  - DOMAIN-SUFFIX,microsoft.com,DIRECT
+  - DOMAIN-SUFFIX,node.xieke.org,DIRECT
+  - DOMAIN-SUFFIX,one.fuu.one,DIRECT
+
+  # Black
+  # > MacKeeper
+  # https://www.lizhi.io/blog/40002904
+  - DOMAIN-SUFFIX,mackeeper.com,REJECT
+  - DOMAIN-SUFFIX,zryydi.com,REJECT
+
+  # > Adobe Flash China Special Edition
+  # https://www.zhihu.com/question/281163698/answer/441388130
+  - DOMAIN-SUFFIX,flash.cn,REJECT
+  - DOMAIN,geo2.adobe.com,REJECT
+  - DOMAIN,neu.edu.cn,oversea
+
+  # > C&J Marketing 思杰马克丁软件
+  # https://www.zhihu.com/question/46746200
+  - DOMAIN-SUFFIX,4009997658.com,REJECT
+  - DOMAIN-SUFFIX,abbyychina.com,REJECT
+  - DOMAIN-SUFFIX,bartender.cc,REJECT
+  - DOMAIN-SUFFIX,betterzip.net,REJECT
+  - DOMAIN-SUFFIX,betterzipcn.com,REJECT
+  - DOMAIN-SUFFIX,beyondcompare.cc,REJECT
+  - DOMAIN-SUFFIX,bingdianhuanyuan.cn,REJECT
+  - DOMAIN-SUFFIX,chemdraw.com.cn,REJECT
+  - DOMAIN-SUFFIX,cjmakeding.com,REJECT
+  - DOMAIN-SUFFIX,cjmkt.com,REJECT
+  - DOMAIN-SUFFIX,codesoftchina.com,REJECT
+  - DOMAIN-SUFFIX,coreldrawchina.com,REJECT
+  - DOMAIN-SUFFIX,crossoverchina.com,REJECT
+  - DOMAIN-SUFFIX,dongmansoft.com,REJECT
+  - DOMAIN-SUFFIX,earmasterchina.cn,REJECT
+  - DOMAIN-SUFFIX,easyrecoverychina.com,REJECT
+  - DOMAIN-SUFFIX,ediuschina.com,REJECT
+  - DOMAIN-SUFFIX,flstudiochina.com,REJECT
+  - DOMAIN-SUFFIX,formysql.com,REJECT
+  - DOMAIN-SUFFIX,guitarpro.cc,REJECT
+  - DOMAIN-SUFFIX,huishenghuiying.com.cn,REJECT
+  - DOMAIN-SUFFIX,hypersnap.net,REJECT
+  - DOMAIN-SUFFIX,iconworkshop.cn,REJECT
+  - DOMAIN-SUFFIX,imindmap.cc,REJECT
+  - DOMAIN-SUFFIX,jihehuaban.com.cn,REJECT
+  - DOMAIN-SUFFIX,keyshot.cc,REJECT
+  - DOMAIN-SUFFIX,kingdeecn.cn,REJECT
+  - DOMAIN-SUFFIX,logoshejishi.com,REJECT
+  - DOMAIN-SUFFIX,luping.net.cn,REJECT
+  - DOMAIN-SUFFIX,mairuan.cn,REJECT
+  - DOMAIN-SUFFIX,mairuan.com,REJECT
+  - DOMAIN-SUFFIX,mairuan.com.cn,REJECT
+  - DOMAIN-SUFFIX,mairuan.net,REJECT
+  - DOMAIN-SUFFIX,mairuanwang.com,REJECT
+  - DOMAIN-SUFFIX,makeding.com,REJECT
+  - DOMAIN-SUFFIX,mathtype.cn,REJECT
+  - DOMAIN-SUFFIX,mindmanager.cc,REJECT
+  - DOMAIN-SUFFIX,mindmanager.cn,REJECT
+  - DOMAIN-SUFFIX,mindmapper.cc,REJECT
+  - DOMAIN-SUFFIX,mycleanmymac.com,REJECT
+  - DOMAIN-SUFFIX,nicelabel.cc,REJECT
+  - DOMAIN-SUFFIX,ntfsformac.cc,REJECT
+  - DOMAIN-SUFFIX,ntfsformac.cn,REJECT
+  - DOMAIN-SUFFIX,overturechina.com,REJECT
+  - DOMAIN-SUFFIX,passwordrecovery.cn,REJECT
+  - DOMAIN-SUFFIX,pdfexpert.cc,REJECT
+  - DOMAIN-SUFFIX,photozoomchina.com,REJECT
+  - DOMAIN-SUFFIX,shankejingling.com,REJECT
+  - DOMAIN-SUFFIX,ultraiso.net,REJECT
+  - DOMAIN-SUFFIX,vegaschina.cn,REJECT
+  - DOMAIN-SUFFIX,xmindchina.net,REJECT
+  - DOMAIN-SUFFIX,xshellcn.com,REJECT
+  - DOMAIN-SUFFIX,yihuifu.cn,REJECT
+  - DOMAIN-SUFFIX,yuanchengxiezuo.com,REJECT
+  - DOMAIN-SUFFIX,zbrushcn.com,REJECT
+  - DOMAIN-SUFFIX,zhzzx.com,REJECT
+
+  # 抗 DNS 污染 
+  # Force some domains which are fucked by GFW while resolving DNS,or do not respect the system Proxy
+  - DOMAIN-SUFFIX,fonts.googleapis.com,DIRECT
+  - DOMAIN-SUFFIX,fonts.gstatic.com,DIRECT
+  - DOMAIN-KEYWORD,amazon,oversea
+  - DOMAIN-KEYWORD,google,oversea
+  - DOMAIN-KEYWORD,gmail,oversea
+  - DOMAIN-KEYWORD,youtube,oversea
+  - DOMAIN-KEYWORD,facebook,oversea
+  - DOMAIN-SUFFIX,fb.me,oversea
+  - DOMAIN-SUFFIX,fb.com,oversea
+  - DOMAIN-SUFFIX,fbcdn.net,oversea
+  - DOMAIN-KEYWORD,twitter,oversea
+  - DOMAIN-KEYWORD,instagram,oversea
+  - DOMAIN-KEYWORD,dropbox,oversea
+  - DOMAIN-SUFFIX,twimg.com,oversea
+  - DOMAIN-KEYWORD,blogspot,oversea
+  - DOMAIN-KEYWORD,whatsapp,oversea
+  - DOMAIN-SUFFIX,youtu.be,oversea
+  - DOMAIN-SUFFIX,github.com,oversea
+  - DOMAIN-SUFFIX,githubusercontent.com,oversea
+  - DOMAIN-SUFFIX,github.io,oversea
+  - DOMAIN-KEYWORD,appledaily,oversea
+  - DOMAIN-KEYWORD,blogspot,oversea
+  - DOMAIN-KEYWORD,dropbox,oversea
+  - DOMAIN-KEYWORD,spotify,oversea
+  - DOMAIN-KEYWORD,telegram,oversea
+  - DOMAIN-KEYWORD,whatsapp,oversea
+  - DOMAIN-SUFFIX,1e100.net,oversea
+  - DOMAIN-SUFFIX,2mdn.net,oversea
+  - DOMAIN-SUFFIX,abc.xyz,oversea
+  - DOMAIN-SUFFIX,akamai.net,oversea
+  - DOMAIN-SUFFIX,appspot.com,oversea
+  - DOMAIN-SUFFIX,autodraw.com,oversea
+  - DOMAIN-SUFFIX,bandwagonhost.com,oversea
+  - DOMAIN-SUFFIX,blogblog.com,oversea
+  - DOMAIN-SUFFIX,cdninstagram.com,oversea
+  - DOMAIN-SUFFIX,chromeexperiments.com,oversea
+  - DOMAIN-SUFFIX,creativelab5.com,oversea
+  - DOMAIN-SUFFIX,crittercism.com,oversea
+  - DOMAIN-SUFFIX,culturalspot.org,oversea
+  - DOMAIN-SUFFIX,dartlang.org,oversea
+  - DOMAIN-SUFFIX,fbsbx.com,oversea
+  - DOMAIN-SUFFIX,gcr.io,oversea
+  - DOMAIN-SUFFIX,gmail.com,oversea
+  - DOMAIN-SUFFIX,googleapis.com,oversea
+  - DOMAIN-SUFFIX,googlevideo.com,oversea
+  - DOMAIN-SUFFIX,gosetsuden.jp,oversea
+  - DOMAIN-SUFFIX,gvt1.com,oversea
+  - DOMAIN-SUFFIX,gwtproject.org,oversea
+  - DOMAIN-SUFFIX,heroku.com,oversea
+  - DOMAIN-SUFFIX,html5rocks.com,oversea
+  - DOMAIN-SUFFIX,humblebundle.com,oversea
+  - DOMAIN-SUFFIX,instagram.com,oversea
+  - DOMAIN-SUFFIX,keyhole.com,oversea
+  - DOMAIN-SUFFIX,kobo.com,oversea
+  - DOMAIN-SUFFIX,kobobooks.com,oversea
+  - DOMAIN-SUFFIX,madewithcode.com,oversea
+  - DOMAIN-SUFFIX,material.io,oversea
+  - DOMAIN-SUFFIX,messenger.com,oversea
+  - DOMAIN-SUFFIX,nianticlabs.com,oversea
+  - DOMAIN-SUFFIX,pinimg.com,oversea
+  - DOMAIN-SUFFIX,pixiv.net,oversea
+  - DOMAIN-SUFFIX,pubnub.com,oversea
+  - DOMAIN-SUFFIX,t.co,oversea
+  - DOMAIN-SUFFIX,telegram.me,oversea
+  - DOMAIN-SUFFIX,tensorflow.org,oversea
+  - DOMAIN-SUFFIX,thefacebook.com,oversea
+  - DOMAIN-SUFFIX,toggleable.com,oversea
+  - DOMAIN-SUFFIX,torproject.org,oversea
+  - DOMAIN-SUFFIX,twimg.com,oversea
+  - DOMAIN-SUFFIX,twitpic.com,oversea
+  - DOMAIN-SUFFIX,twitter.com,oversea
+  - DOMAIN-SUFFIX,unfiltered.news,oversea
+  - DOMAIN-SUFFIX,waveprotocol.org,oversea
+  - DOMAIN-SUFFIX,webmproject.org,oversea
+  - DOMAIN-SUFFIX,webrtc.org,oversea
+  - DOMAIN-SUFFIX,whatsapp.com,oversea
+  - DOMAIN-SUFFIX,whatsapp.net,oversea
+  - DOMAIN-SUFFIX,youtube-nocookie.com,oversea
+  - DOMAIN-SUFFIX,anyproxy.io,oversea
+
+  # 常见广告域名屏蔽
+  - DOMAIN-KEYWORD,admarvel,REJECT
+  - DOMAIN-KEYWORD,admaster,REJECT
+  - DOMAIN-KEYWORD,adsage,REJECT
+  - DOMAIN-KEYWORD,adsmogo,REJECT
+  - DOMAIN-KEYWORD,adsrvmedia,REJECT
+  - DOMAIN-KEYWORD,adwords,REJECT
+  - DOMAIN-KEYWORD,adservice,REJECT
+  - DOMAIN-KEYWORD,domob,REJECT
+  - DOMAIN-KEYWORD,duomeng,REJECT
+  - DOMAIN-KEYWORD,dwtrack,REJECT
+  - DOMAIN-KEYWORD,guanggao,REJECT
+  - DOMAIN-KEYWORD,lianmeng,REJECT
+  - DOMAIN-SUFFIX,mmstat.com,REJECT
+  - DOMAIN-KEYWORD,omgmta,REJECT
+  - DOMAIN-KEYWORD,openx,REJECT
+  - DOMAIN-KEYWORD,partnerad,REJECT
+  - DOMAIN-KEYWORD,pingfore,REJECT
+  - DOMAIN-KEYWORD,supersonicads,REJECT
+  - DOMAIN-KEYWORD,uedas,REJECT
+  - DOMAIN-KEYWORD,umeng,REJECT
+  - DOMAIN-KEYWORD,usage,REJECT
+  - DOMAIN-KEYWORD,wlmonitor,REJECT
+  - DOMAIN-KEYWORD,zjtoolbar,REJECT
+
+  - GEOIP,CN,DIRECT
+  # - GEOIP,US,oversea
+  - MATCH,oversea

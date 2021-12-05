@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+# 获取 Github 指定用户或用户的前一百个项目 按更新排序
+# https://api.github.com/orgs/symfony/repos?per_page=100&page=1&sort=pushed
+# cmd type(org or user) username page(default 1)
+getrepos()
+{
+    api='https://api.github.com'
+
+    type=$2
+    user=$3
+    page=$4
+
+    [[ -z "$page" ]] && page=$1
+    # [[ ! -d "$(pwd)/${user}" ]] && mkdir -p "$(pwd)/${user}" && cd "$(pwd)/${user}"
+
+  case $type in
+    user )
+        repos=$(curl -sL "${api}/users/${user}/repos?per_page=100&page=${page}&sort=pushed" | grep 'full_name' | awk -F '"' '{print $4}')
+        for repo in ${repos[*]}; do
+            echo "==> Repo: https://github.com/$repo"
+            git clone --depth 1 "https://github.com/$repo"
+        done
+        ;;
+    org)
+        repos=$(curl -sL "${api}/orgs/${user}/repos?per_page=100&page=${page}&sort=pushed" | grep 'full_name' | awk -F '"' '{print $4}')
+        for repo in ${repos[*]}; do
+            echo "==> Repo: https://github.com/$repo"
+            git clone --depth 1 "https://github.com/$repo"
+        done
+        ;;
+    *)
+      echo 'error type'
+      exit 1
+        ;;
+  esac
+}
+
+# 解压当前目录下所有压缩包
+unars()
+{
+  archives=$(find . -type f | grep -E "\.tar|\.rar|\.zip")
+  for archive in ${archives[*]}; do
+    unar $archive
+  done
+}
+
+imgod()
+{
+	echo 'Yean You Are God' $@
+}
+
+usage()
+{
+	echo "Usage: 
+apps options suboption:
+
+  imgod			call you is god of the world
+  getrepos		apps getrepos org|user username page num git clone first 100 repo of user or org
+
+"
+}
+
+[ -z "$1" ] && usage
+
+case $1 in
+	help)
+		echo 'Usage: aaa'
+		;;
+	* )
+		$1 $@
+		;;
+esac

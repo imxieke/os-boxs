@@ -1,0 +1,182 @@
+###
+ # @Author: Cloudflying
+ # @Date: 2021-12-04 23:54:35
+ # @LastEditTime: 2021-12-05 23:48:00
+ # @LastEditors: Cloudflying
+ # @Description: 
+ # @FilePath: /.boxs/conf/aliases/utils.aliases
+### 
+
+# quick jump
+alias ~='cd ~'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+
+alias ld='ls -ld'          # Show info about the directory
+alias lla='ls -lAF'        # Show hidden all files
+alias ll='ls -lF'          # Show long file information
+# alias l='ls -1F'         # Show long file information
+alias la='ls -AF'          # Show hidden files
+alias lx='ls -lXB'         # Sort by extension
+alias lk='ls -lSr'         # Sort by size, biggest last
+alias lc='ls -ltcr'        # Sort by and show change time, most recent last
+alias lu='ls -ltur'        # Sort by and show access time, most recent last
+alias lt='ls -ltr'         # Sort by date, most recent last
+alias lr='ls -lR'          # Recursive ls
+
+alias ':q'="exit"
+alias du='grc du -h'
+alias ssh="ssh -o ServerAliveInterval=60"
+
+alias e=${EDITOR}
+alias vi=${EDITOR}
+alias vim=${EDITOR}
+alias nano=${EDITOR}
+alias emacs=${EDITOR}
+
+alias history-top='history | awk -F ' ' '{print $2}' | sort | uniq -c | sort -n -r  | head -n 10'
+alias ezsh="e ~/.zshrc"
+
+alias update-fonts='cp -fr ~/.boxs/conf/fonts/* ~/Library/Fonts/'
+
+alias timestamp="date +%s"
+alias now="date \"+%Y-%m-%d %H:%I:%S\""
+alias dl="wget -c --no-check-certificate"
+alias devdir="cd /Volumes/Data/Code"
+alias gclp="proxychains4 git clone --depth=1"
+alias gdp="git clone --depth=1"
+alias pdl="proxychains4 wget"
+alias ssh="ssh -o ServerAliveInterval=60"
+alias genpass="openssl rand -hex "
+alias ping='ping -c 5'
+alias pyweb='python -m SimpleHTTPServer 8000'
+alias phpweb='php -S 0.0.0.0:1024 -t .'
+alias myip="curl -sL http://myip.ipip.net"
+# alias myrawip="curl -sL https://ip.sb"
+alias locip='ipconfig getifaddr en0'
+alias locrawip=$(ifconfig | grep -v '127.0.0.1' | grep inet | grep -v :: | grep -v inet6| awk '{print $2}')
+alias cpr='composer require -vvv'
+alias cps='composer search'
+alias cpr73='php73 /usr/local/bin/composer require -vvv'
+alias vidotfile='subl ~/.config/dotfile'
+alias viclash='subl ~/.config/clash'
+alias visubl='subl ~/Library/Application\ Support/Sublime\ Text'
+alias aria2web='open http://127.0.0.1:6801'
+alias site-mirror="wget -H 'user-agent: Mozilla' -H 'Referer: https://www.google.com/search?q=coin' -U 'Mozilla' --recursive --page-requisites --no-parent --convert-links --tries=3 --continue --timeout=3 --no-check-certificate"
+# 导出 vscode 拓展
+alias export-vscode-extensions="code --list-extensions | php ~/.config/dotfile/library/function.php vscode_extensions2json"
+alias axel='axel -n 4 -c -k -a'
+alias wget='/usr/local/bin/wget -c --content-disposition --no-check-certificate --user-agent="User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0"'
+alias get='aria2c -c -x 4'
+alias cdduck='cd /Users/imxieke/Library/Group\ Containers/G69SCX94XU.duck/Library/Application\ Support/duck/Volumes/'
+
+alias gdu='grc du -h'
+alias jobl='jobs -l'
+alias cgrep='grep --color=auto'
+alias cfgrep='fgrep --color=auto'
+alias cegrep='egrep --color=auto'
+alias diffu='diff -u'
+
+alias tailf='tail -f'
+alias myip="wget -qO- https://wtfismyip.com/text"
+alias enjoke='curl https://icanhazdadjoke.com'
+
+alias dfh='df -h'
+
+# Proxy
+alias unproxy='unset http_proxy;unset https_proxy;unset all_proxy'
+alias 'crawler'='export https_proxy=http://127.0.0.1:8086 http_proxy=http://127.0.0.1:8086 all_proxy=http://127.0.0.1:8086'
+
+alias wifi-info='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I'
+alias flushdns="dscacheutil -flushcache"
+alias disk-usage-top="du -sh $@ | sort -r -n | head -10"
+
+# SSH
+# NAS
+alias homecloud="ssh imxieke@192.168.31.6"
+
+# open application
+alias st='open -a "Sublime Text"'
+alias font="open -a 'Font Book'"
+
+if [[ -f ~/.acme.sh/acme.sh ]]; then
+  alias acme="~/.acme.sh/acme.sh"
+  export LE_WORKING_DIR="~/.acme.sh"
+fi
+
+# MAPP Pro
+if [[ -d '/Applications/MAMP/bin/php' ]]; then
+  alias php56="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php5.6)/bin/php"
+  alias php70="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.0)/bin/php"
+  alias php71="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.1)/bin/php"
+  alias php72="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.2)/bin/php"
+  alias php73="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.3)/bin/php"
+  alias php74="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.4)/bin/php"
+  alias php80="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php8.0)/bin/php"
+fi
+
+# Atom short command cli
+if [[ -f '/Applications/Atom.app/Contents/Resources/app/atom.sh' ]]; then
+  alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
+  alias apm="/Applications/Atom.app/Contents/Resources/app/apm/bin/apm"
+  alias anode="/Applications/Atom.app/Contents/Resources/app/apm/bin/node"
+  alias anpm="/Applications/Atom.app/Contents/Resources/app/apm/bin/npm"
+fi
+
+# HBuildX short command cli
+if [[ -f '/Applications/HBuilderX.app/Contents/MacOS/cli' ]]; then
+  alias hbx="/Applications/HBuilderX.app/Contents/MacOS/cli"
+fi
+
+# alias cwine is crossover version wine
+if [[ -f '/Applications/CrossOver.app/Contents/SharedSupport/CrossOver/bin/wine' ]]; then
+  alias cwine='/Applications/CrossOver.app/Contents/SharedSupport/CrossOver/bin/wine'
+fi
+
+# Set Proxy Alias
+if [[ ! -z $(command -v proxychains4) ]]; then
+  alias ap='proxychains4'
+  alias proxychains='proxychains4'
+elif [[ ! -z $(command -v proxychains) ]]; then
+   alias ap='proxychains'
+elif [[ ! -z $(command -v proxychains-ng) ]]; then
+   alias ap='proxychains-ng'
+   alias proxychains='proxychains-ng'
+fi
+
+if [[ "${OSNAME}" == 'Darwin' ]]; then
+  # Recursively delete `.DS_Store` files
+  alias rmds="find . -type f -name '*.DS_Store' -ls -delete"
+
+  # VirtualBox
+  if [ -f "/Applications/VirtualBox.app/Contents/MacOS/VBoxManage" ];then
+    alias vm='/Applications/VirtualBox.app/Contents/MacOS/VBoxManage'
+  fi
+
+  # Google Chrome linux is set by default
+  if [ -f "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ];then
+    alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+  fi
+
+  alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+  alias sdu='du -h -d 1 -I ~/Library -I /Applications -I /dev'
+  alias sdiff='diff -ri'
+
+  # “XXXXX” is damaged and can’t be opened. You should move it to the Trash
+  alias fix-damaged="sudo xattr -d com.apple.quarantine"
+
+else
+  alias sdu='du -h -d 1 --exclude="/proc" --exclude="/dev"'
+fi
+
+# visual studio code
+if [[ -f '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code' ]]; then
+  alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+fi
+
+# Sublime short command cli
+if [[ -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' ]]; then
+  alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+fi

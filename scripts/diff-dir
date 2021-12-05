@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd $1 && find . ! -path "*.git*" $3 $4 > /tmp/diff-file-diff1
+cd $2 && find . ! -path "*.git*" $3 $4 > /tmp/diff-file-diff2
+
+diff /tmp/diff-file-diff1 /tmp/diff-file-diff2

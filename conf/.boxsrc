@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+###
+ # @Author: Cloudflying
+ # @Date: 2021-12-03 23:41:53
+ # @LastEditTime: 2021-12-05 23:48:15
+ # @LastEditors: Cloudflying
+ # @Description: 
+ # @FilePath: /.boxs/conf/.boxsrc
+### 
+
+# 使用 local 定义局部变量
+# 使用 export 定义全局变量
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set locale and language
+export LANG="en_US.UTF-8"
+export LANGUAGE="${LANGUAGE}"
+export LC_ALL="${LANGUAGE}"
+export LC_CTYPE="${LANGUAGE}"
+
+local BOXS_HOME=~/.boxs
+local BOXS_CONF=${BOXS_HOME}/conf
+local BOXS_LOGS=${BOXS_HOME}/logs
+
+[ -f ${BOXS_CONF}/.env ] 	 && source ${BOXS_CONF}/.env
+
+# 加载自定义可执行文件
+[ -d ${BOXS_HOME}/bin/all ] && export PATH="$PATH:${BOXS_HOME}/bin/all"
+
+if [[ "${OSNAME}" == 'Darwin' ]]; then
+	[ -d ${BOXS_HOME}/bin/macos ] && export PATH="$PATH:${BOXS_HOME}/bin/macos"
+elif [[ "${OSNAME}" == 'Linux' ]]; then
+	[ -d ${BOXS_HOME}/bin/linux ] && export PATH="$PATH:${BOXS_HOME}/bin/linux"
+fi
+
+[ -f ${BOXS_HOME}/scripts/aliases ] && source ${BOXS_HOME}/scripts/aliases
+[ -f ${BOXS_HOME}/scripts/function.sh ] && source ${BOXS_HOME}/scripts/function.sh
+[ -f ${BOXS_HOME}/scripts/macos-build-env-conf.sh ] && source ${BOXS_HOME}/scripts/macos-build-env-conf.sh
+
+# 加载自定义 aliases
+for aliasf in ${BOXS_HOME}/conf/aliases/* ; do
+  echo "[+] sourcing $aliasf ... "
+  source $aliasf
+done
+
+# Plugins
+[ -f ${BOXS_HOME}/scripts/command-not-found.sh ] && source ${BOXS_HOME}/scripts/command-not-found.sh
+
+if [[ -f '/usr/local/bin/brew' ]]; then
+    # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/bottles"
+    # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+    # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+fi
+
+[ -d ~/.cargo/bin ] && export PATH="$PATH:~/.cargo/bin"
+[ -d BOXS_HOME/bin ]  && export PATH="$PATH:${BOXS_HOME}/bin"
+
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+export DOCKER_REGISTRY_PREFIX=registry.cn-hongkong.aliyuncs.com/imxieke
+
+# 获取代理地址
+export PROXY_ADDR=$(grep 'external-controller' ~/.config/clash/config.yaml | awk -F ': ' '{print $2}')
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=http://127.0.0.1:7890
+
+# export
+export NVIM_HOME="~/.config/nvim"
+
+# fzf
+export FZF_DEFAULT_COMMAND='fzf'
+export DISABLE_FZF_AUTO_COMPLETION=false
+# alway show quote
+export ZSH_HACKER_QUOTES_ENABLE_WHEN_INTERACTIVE=true
+
+# Config System Environment
+# Darwin or Linux
+export OSNAME=$(uname -s)
+
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+# Set Default Editor
+if [[ -n $(command -v nvim) ]]; then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+elif [[ -n $(command -v vim) ]]; then
+  export EDITOR='vim'
+  export VISUAL='vim'
+fi
+
+export CVSEDITOR="${EDITOR}"
+export SVN_EDITOR="${EDITOR}"
+export GIT_EDITOR="${EDITOR}"
+
+# Golang env
+if [[ -n $(command -v go) ]]; then
+  mkdir -p ~/.go/bin            # 包含可执行文件，如：编译器，Go 工具
+  mkdir -p ~/.go/src            # 包含源代码构建脚本和标准库的包的完整源代码（Go 是一门开源语言）
+  mkdir -p ~/.go/doc            # 包含示例程序，代码工具，本地文档等
+  mkdir -p ~/.go/lib            # 包含文档模版
+  mkdir -p ~/.go/misc           # 包含与支持 Go 编辑器有关的配置文件以及 cgo 的示例
+  mkdir -p ~/.go/os_arch        # 包含标准库的包的对象文件（.a）
+  mkdir -p ~/.go/cmd            # 包含 Go 和 C 的编译器和命令行脚本
+  export GOPATH="${HOME}/.go"
+  export GOBIN="${GOPATH}/bin"
+  export GOSRC="${GOPATH}/src"
+fi
+
+if [[ -d $HOME/.nvm ]]; then
+	export NVM_DIR="$HOME/.nvm"
+	# This loads nvm
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+	# This loads nvm bash_completion
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="yyyy-mm-dd"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
+
+# emoji
+export ZSH_TICK='✔'
+export ZSH_CROSS='✖'
+export ZSH_STAR='★'
+export ZSH_SQUARE='▇'
+export ZSH_SQUARE_SMALL='◻'
+export ZSH_SQUARE_SMALL_FILLED='◼'
+export ZSH_PLAY='▶'
+export ZSH_CIRCLE='◯'
+export ZSH_CIRCLE_FILLED='◉'
+export ZSH_CIRCLE_DOTTED='◌'
+export ZSH_CIRCLE_DOUBLE='◎'
+export ZSH_CIRCLE_CIRCLE='ⓞ'
+export ZSH_CIRCLE_CROSS='ⓧ'
+export ZSH_CIRCLE_PIPE='Ⓘ'
+export ZSH_CIRCLE_QUESTION_MARK='?⃝'
+export ZSH_BULLET='●'
+export ZSH_DOT='․'
+export ZSH_LINE='─'
+export ZSH_ELLIPSIS='…'
+export ZSH_POINTER='❯'
+export ZSH_POINTER_SMALL='›'
+export ZSH_INFO='ℹ'
+export ZSH_WARNING='⚠'
+export ZSH_HAMBURGER='☰'
+export ZSH_SMILEY='㋡'
+export ZSH_MUSTACHE='෴'
+export ZSH_HEART='♥'
+export ZSH_ARROW_UP='↑'
+export ZSH_ARROW_DOWN='↓'
+export ZSH_ARROW_LEFT='←'
+export ZSH_ARROW_RIGHT='→'
+export ZSH_RADIO_ON='◉'
+export ZSH_RADIO_OFF='◯'
+export ZSH_CHECKBOX_ON='☒'
+export ZSH_CHECKBOX_OFF='☐'
+export ZSH_CHECKBOX_CIRCLE_ON='ⓧ'
+export ZSH_CHECKBOX_CIRCLE_OFF='Ⓘ'
+export ZSH_QUESTION_MARK_PREFIX='?'
+export ZSH_ONE_HALF='½'
+export ZSH_ONE_THIRD='⅓'
+export ZSH_ONE_QUARTER='¼'
+export ZSH_ONE_FIFTH='⅕'
+export ZSH_ONE_SIXTH='⅙'
+export ZSH_ONE_SEVENTH='⅐'
+export ZSH_ONE_EIGHTH='⅛'
+export ZSH_ONE_NINTH='⅑'
+export ZSH_ONE_TENTH='⅒'
+export ZSH_TWO_THIRDS='⅔'
+export ZSH_TWO_FIFTHS='⅖'
+export ZSH_THREE_QUARTERS='¾'
+export ZSH_THREE_FIFTHS='⅗'
+export ZSH_THREE_EIGHTHS='⅜'
+export ZSH_FOUR_FIFTHS='⅘'
+export ZSH_FIVE_SIXTHS='⅚'
+export ZSH_FIVE_EIGHTHS='⅝'
+export ZSH_SEVEN_EIGHTHS='⅞'
+
+# contains numerous variables for common ascii emojis
+# Sources:
+# * http://www.emoticonfun.org/
+
+export em_confused='¯\_(⊙︿⊙)_/¯'
+export em_crying='ಥ_ಥ'
+export em_cute_bear='ʕ•ᴥ•ʔ'
+export em_cute_face='(｡◕‿◕｡)'
+export em_excited='☜(⌒▽⌒)☞'
+export em_fisticuffs='ლ(｀ー´ლ)'
+export em_fliptable='(╯°□°）╯︵ ┻━┻'
+export em_person_flip_table=$em_fliptable
+export em_person_flip_person='(╯°Д°）╯︵/(.□ . \)\'
+export em_table_flip_person='ノ┬─┬ノ ︵ ( \o°o)\'
+export em_person_unflip_table='┬──┬◡ﾉ(° -°ﾉ)'
+export em_happy='ヽ(´▽`)/'
+export em_innocent='ʘ‿ʘ'
+export em_kirby='⊂(◉‿◉)つ'
+export em_lennyface='( ͡° ͜ʖ ͡°)'
+export em_lion='°‿‿°'
+export em_muscleflex='ᕙ(⇀‸↼‶)ᕗ'
+export em_muscleflex2='ᕦ(∩◡∩)ᕤ'
+export em_perky='(`・ω・´)'
+export em_piggy='( ́・ω・`)'
+export em_shrug='¯\_(ツ)_/¯'
+export em_point_right='(☞ﾟヮﾟ)☞'
+export em_point_left='☜(ﾟヮﾟ☜)'
+export em_magic='╰(•̀ 3 •́)━☆ﾟ.*･｡ﾟ'
+export em_shades='(•_•)
+( •_•)>⌐■-■
+(⌐■_■)'
+export em_disapprove='ಠ_ಠ'
+export em_wink='ಠ‿↼'
+export em_facepalm='(－‸ლ)'
+export em_hataz_gon_hate='ᕕ( ᐛ )ᕗ'
+export em_salute='(￣^￣)ゞ'

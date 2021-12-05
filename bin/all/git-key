@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Get SSH Key from GitHub
+#
+# MIT License
+#
+
+set -eu
+
+__git_key() {
+  local gituser
+  gituser="${1:-$(git config --get github.user)}"
+  curl "https://github.com/${gituser}.keys"
+}
+
+__git_key "$@"

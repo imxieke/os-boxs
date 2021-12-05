@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+chmod -R +x ~/.boxs/bin
+
+echo "permission fix success"

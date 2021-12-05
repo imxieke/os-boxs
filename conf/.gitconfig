@@ -1,0 +1,53 @@
+# -*- mode: gitconfig; indent-tabs-mode: t; -*- vim: set ft=gitconfig nolist noet:
+
+[alias]
+	amend = commit --amend --no-edit
+	bl = blame
+	br = branch
+	ci = commit
+	cl = clone
+	co = checkout
+	cobm = checkout-branch-match
+	cp = cherry-pick
+
+	# History in one line per commit. Now in Technicolor!
+	# Abbrv hash, author name (16 chars), commit message (wrapped at 72 chars)
+	ol = "!git log $1 --format='%C(auto)%h %<(16,trunc)%an %w(72,0,25)%s'"
+
+	pff = pull --ff-only --no-stat
+	pr = pull --rebase
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	root = rev-parse --show-toplevel
+	sh = show
+	st = status
+[init]
+	defaultBranch = master
+[user]
+	email = oss@live.hk
+	name = imxieke
+[author]
+	name = Cloudflying
+	email = oss@live.hk
+[color "diff"]
+    meta = magenta bold
+    new = green bold
+    old = red italic
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = false
+	ff = only
+[push]
+	default = upstream
+[core]
+	fileMode = false
+[color]
+	ui = always
+[rebase]
+	autostash = true
+[help]
+	autocorrect = 1

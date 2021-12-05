@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+# git-in v0.1.0
+#
+# Show whether or not a given path is in a git repository
+#
+# Usage:
+#
+#   git in $some_path
+#
+
+
+# Exits with error if not a git repository
+__check_in_repository() {
+  git rev-parse --git-dir > /dev/null 2>&1
+}
+
+
+# exit with message if invalid usage
+__check_args() {
+  if (( $# == 0 )); then
+    >&2 echo "ERROR: Please provide a path argument."
+    exit 1
+  fi
+
+  if [ ! -f "$1" ] && [ ! -d "$1" ]; then
+    >&2 echo "ERROR: Path does not exist."
+    exit 1
+  fi
+}
+
+
+# cd into path's directory and exit with check_in_repository status
+# so either 0 (in git) or 128 (not in git)
+__git_in() {
+  local dir_path=$1
+  local remote
+
+  if [ -f "$1" ]; then
+    dir_path="$(dirname "$1")"
+  fi
+
+  dir_path="$(realpath "$dir_path")"
+  cd -- "$dir_path" || {
+    >&2 printf 'ERROR: Could not enter %s\ns' "$dir_path"
+    exit 1
+  }
+
+  if __check_in_repository; then
+    printf 'local repo    %s\n' "$(git rev-parse --show-toplevel)"
+
+    remote="$(git config --get remote.origin.url)"
+    if [ -n "$remote" ]; then
+      printf 'with origin   %s\n' "$remote"
+    fi
+  else
+    >&2 echo "ERROR: Path is not in a repo."
+    exit 1
+  fi
+}
+
+
+__check_args "$@"
+__git_in "$1"

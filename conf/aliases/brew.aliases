@@ -1,0 +1,14 @@
+###
+ # @Author: Cloudflying
+ # @Date: 2021-12-04 18:57:06
+ # @LastEditTime: 2021-12-05 23:39:59
+ # @LastEditors: Cloudflying
+ # @Description: 
+ # @FilePath: /.boxs/conf/aliases/brew.aliases
+### 
+# Brew
+alias bs='brew search'
+alias bi='brew install'
+alias bu='brew update'
+alias bU='brew upgrade'
+alias br='brew uninstall'
