@@ -1,0 +1,11 @@
+###
+ # @Author: Cloudflying
+ # @Date: 2021-12-07 01:22:58
+ # @LastEditTime: 2021-12-07 01:23:09
+ # @LastEditors: Cloudflying
+ # @Description: 
+ # @FilePath: /docs/Users/imxieke/.boxs/bin/all/git-push
+### 
+#!/usr/bin/env bash
+
+git add -A && git commit -m "$(date) $@"  && git push
