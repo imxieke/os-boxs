@@ -8,7 +8,7 @@ fi
 ###
  # @Author: Cloudflying
  # @Date: 2021-09-19 01:49:42
- # @LastEditTime: 2021-12-05 23:49:54
+ # @LastEditTime: 2021-12-06 15:02:12
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/.zshrc
@@ -57,7 +57,6 @@ zplug "unixorn/fzf-zsh-plugin"
 zplug "chitoku-k/fzf-zsh-completions"
 zplug "yuki-yano/fzf-preview.zsh"
 zplug "trystan2k/zsh-tab-title"
-zplug "zpm-zsh/ls"
 zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
 if [[ $(uname -s) == 'Darwin' ]]; then

@@ -2,7 +2,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-06-21 12:46:09
- # @LastEditTime: 2021-12-06 00:26:38
+ # @LastEditTime: 2021-12-06 18:46:18
  # @LastEditors: Cloudflying
  # @Description: Recovery Dotfile
  # @FilePath: /.boxs/scripts/recovery.sh
@@ -41,6 +41,19 @@ if [[ -n "$(command -v nvim)" ]]; then
 		ln -sf ~/.boxs/conf/nvim ~/.config/nvim
 	fi
 fi
+
+_vscode()
+{
+
+	if [[ -f ~/.boxs/conf/app-export/vscode-extensions.txt ]]; then
+		exts=$(cat ~/.boxs/conf/backup/vscode-extensions.txt)
+		for ext in $exts
+		do
+			code --install-extension $ext
+		done
+		
+	fi
+}
 
 # ln -s ~/.config/dotfile/conf/oh-my-zsh ~/.oh-my-zsh
 # ln -s ~/.config/dotfile/conf/.zshrc ~/.zsh

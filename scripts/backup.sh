@@ -144,6 +144,42 @@ rsync_bin()
 
 }
 
+_backup_single_file()
+{
+	if [[ "$(uname -s)" == 'Darwin' ]]; then
+	
+		cp -fr ~/Library/Application\ Support/Motrix/user.json ~/.boxs/conf/backup/motrix-user.json
+		cp -fr ~/Library/Application\ Support/Motrix/system.json ~/.boxs/conf/backup/motrix-system.json
+	elif [[ "$(uname -s)" == 'Linux' ]]; then
+		echo ''
+	fi
+	cp -fr /.config/clash/config.yaml ~/.boxs/conf/backup/clash-config.yaml
+
+}
+
+_sublime()
+{
+	mkdir -p ~/.boxs/conf/backup/sublimetext
+	if [[ "$(uname -s)" == 'Darwin' ]]; then
+		# 不知道是否可以在其他版本使用
+		cp ~/Library/Application\ Support/Sublime\ Text/Local/License.sublime_license ~/.boxs/conf/backup/sublimetext/License.sublime_license-mac-4118
+		cp -fr ~/Library/Application\ Support/Sublime\ Text/Packages ~/.boxs/conf/backup/sublimetext/
+	fi
+}
+
+# backup visual studio code extensions
+_vscode()
+{
+	if [[ "$(uname -s)" == 'Darwin' ]]; then
+		cp -fr ~/Library/Application\ Support/Code/User/settings.json ~/.boxs/conf/backup/vscode-settings.json
+	elif [[ "$(uname -s)" == 'Linux' ]]; then
+		# unknown vscode linux path
+		cp -fr ~/unknow/Code/User/settings.json ~/.boxs/conf/backup/vscode-settings.json
+	fi
+	code --install-extension ~/.boxs/conf/backup/vscode-extensions.txt
+}
+
+
 rsync_config
 sync_other
 rsync_bin

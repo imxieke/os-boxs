@@ -1,7 +1,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-12-04 23:54:35
- # @LastEditTime: 2021-12-05 23:48:00
+ # @LastEditTime: 2021-12-06 15:01:24
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/aliases/utils.aliases
@@ -14,20 +14,23 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 
-alias ld='ls -ld'          # Show info about the directory
-alias lla='ls -lAF'        # Show hidden all files
-alias ll='ls -lF'          # Show long file information
-# alias l='ls -1F'         # Show long file information
-alias la='ls -AF'          # Show hidden files
-alias lx='ls -lXB'         # Sort by extension
-alias lk='ls -lSr'         # Sort by size, biggest last
-alias lc='ls -ltcr'        # Sort by and show change time, most recent last
-alias lu='ls -ltur'        # Sort by and show access time, most recent last
-alias lt='ls -ltr'         # Sort by date, most recent last
-alias lr='ls -lR'          # Recursive ls
+# alias ld='ls -ld'          # Show info about the directory
+# alias lla='ls -lAF'        # Show hidden all files
+# alias ll='ls -lF'          # Show long file information
+# # alias l='ls -1F'         # Show long file information
+# alias la='ls -AF'          # Show hidden files
+# alias lx='ls -lXB'         # Sort by extension
+# alias lk='ls -lSr'         # Sort by size, biggest last
+# alias lc='ls -ltcr'        # Sort by and show change time, most recent last
+# alias lu='ls -ltur'        # Sort by and show access time, most recent last
+# alias lt='ls -ltr'         # Sort by date, most recent last
+# alias lr='ls -lR'          # Recursive ls
 
+alias cls='exa -l --git --icons --classify --group-directories-first --time-style=long-iso --group --color-scale'
+alias gls='cls --git-ignore'
 alias ':q'="exit"
-alias du='grc du -h'
+alias gdu='grc du -h'
+  alias sdu='/usr/bin/du -h -d 1 -I ~/Library -I /Applications -I /dev'
 alias ssh="ssh -o ServerAliveInterval=60"
 
 alias e=${EDITOR}
@@ -161,7 +164,6 @@ if [[ "${OSNAME}" == 'Darwin' ]]; then
   fi
 
   alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-  alias sdu='du -h -d 1 -I ~/Library -I /Applications -I /dev'
   alias sdiff='diff -ri'
 
   # “XXXXX” is damaged and can’t be opened. You should move it to the Trash
