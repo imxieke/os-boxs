@@ -141,7 +141,6 @@ rsync_bin()
 		logger
 		${RSYNC_CMD} .bin/besttrace ${BAKTO}/bin >> ${LOGFILE}
 	fi
-
 }
 
 _backup_single_file()
@@ -163,7 +162,8 @@ _sublime()
 	if [[ "$(uname -s)" == 'Darwin' ]]; then
 		# 不知道是否可以在其他版本使用
 		cp ~/Library/Application\ Support/Sublime\ Text/Local/License.sublime_license ~/.boxs/conf/backup/sublimetext/License.sublime_license-mac-4118
-		cp -fr ~/Library/Application\ Support/Sublime\ Text/Packages ~/.boxs/conf/backup/sublimetext/
+		cp -fr ~/Library/Application\ Support/Sublime\ Text/Packages/User/ ~/.boxs/conf/backup/sublimetext/conf
+		cp -fr ~/Library/Application\ Support/Sublime\ Text/Packages ~/.boxs/conf/backup/sublimetext/packages
 	fi
 }
 
@@ -179,7 +179,8 @@ _vscode()
 	code --install-extension ~/.boxs/conf/backup/vscode-extensions.txt
 }
 
+_sublime
 
-rsync_config
-sync_other
-rsync_bin
+# rsync_config
+# sync_other
+# rsync_bin

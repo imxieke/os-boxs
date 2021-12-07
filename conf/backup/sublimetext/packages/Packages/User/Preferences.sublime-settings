@@ -1,0 +1,12 @@
+{
+	"theme": "Adaptive.sublime-theme",
+	"font_size": 18,
+	"folder_exclude_patterns": [".svn", ".hg", "CVS", ".Trash", ".Trash-*"],
+	"file_exclude_patterns": ["*.pyc", "*.pyo", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", ".directory", "desktop.ini", "*.class", "*.psd", "*.db", "*.sublime-workspace"],
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"update_check": false,
+	"color_scheme": "Mariana.sublime-color-scheme",
+}

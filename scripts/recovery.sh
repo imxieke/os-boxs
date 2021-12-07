@@ -2,7 +2,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-06-21 12:46:09
- # @LastEditTime: 2021-12-06 18:46:18
+ # @LastEditTime: 2021-12-07 15:31:57
  # @LastEditors: Cloudflying
  # @Description: Recovery Dotfile
  # @FilePath: /.boxs/scripts/recovery.sh
@@ -44,7 +44,6 @@ fi
 
 _vscode()
 {
-
 	if [[ -f ~/.boxs/conf/app-export/vscode-extensions.txt ]]; then
 		exts=$(cat ~/.boxs/conf/backup/vscode-extensions.txt)
 		for ext in $exts

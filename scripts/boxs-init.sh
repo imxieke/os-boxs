@@ -200,8 +200,10 @@ _config_ohmyzsh()
 	if [[ -d ~/.oh-my-zsh ]]; then
 		mkdir -p ~/.boxs/opt
 		# zplug zsh plugin manager
-		git clone --depth 1 https://github.com/zplug/zplug ~/.boxs/opt/zplug
-		# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+		if [[ ! -d ~/.boxs/opt/zplug ]]; then
+			git clone --depth 1 https://github.com/zplug/zplug ~/.boxs/opt/zplug
+		fi
+
 		# Plugin
 		# git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
 		# git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -441,5 +443,6 @@ _fetch_script_bin()
 }
 
 _fetch_command_not_found_dict
+_config_ohmyzsh
 # _fetch_speedtest_cli
 _fetch_script_bin
