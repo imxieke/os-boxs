@@ -14,7 +14,6 @@ if [[ -r "~/.boxs/etc/p10k/p10k-instant-prompt.zsh" ]]; then
   source ~/.boxs/etc/p10k/p10k-instant-prompt.zsh
 fi
 
-
 export ZSH=$HOME/.oh-my-zsh
 # Check zsh load time for debug
 # zmodload zsh/zprof

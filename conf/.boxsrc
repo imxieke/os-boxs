@@ -45,7 +45,7 @@ for aliasf in ${BOXS_HOME}/conf/aliases/* ; do
   source $aliasf
 done
 
-[ -d ${BOXS_CONF}/completion/zsh ] && fpath=(${BOXS_CONF}/completion/zsh $fpath)
+# [ -d ${BOXS_CONF}/completion/zsh ] && fpath=(${BOXS_CONF}/completion/zsh $fpath)
 
 # Plugins
 [ -f ${BOXS_HOME}/scripts/command-not-found.sh ] && source ${BOXS_HOME}/scripts/command-not-found.sh
