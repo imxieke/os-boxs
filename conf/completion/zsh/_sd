@@ -1,0 +1,43 @@
+#compdef sd
+
+autoload -U is-at-least
+
+_sd() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'-f+[Regex flags. May be combined (like `-f mc`).]' \
+'--flags=[Regex flags. May be combined (like `-f mc`).]' \
+'-p[Output result into stdout and do not modify files]' \
+'--preview[Output result into stdout and do not modify files]' \
+'-s[Treat expressions as non-regex strings]' \
+'--string-mode[Treat expressions as non-regex strings]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':find -- The regexp or string (if -s) to search for:_files' \
+':replace-with -- What to replace each match with. Unless in string mode, you may use captured values like $1, $2, etc:_files' \
+'::files -- The path to file(s). This is optional - sd can also read from STDIN:_files' \
+&& ret=0
+    
+}
+
+(( $+functions[_sd_commands] )) ||
+_sd_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'sd commands' commands "$@"
+}
+
+_sd "$@"

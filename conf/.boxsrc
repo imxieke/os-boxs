@@ -2,7 +2,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-12-03 23:41:53
- # @LastEditTime: 2021-12-06 00:22:42
+ # @LastEditTime: 2021-12-07 12:57:40
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/.boxsrc
@@ -44,6 +44,8 @@ for aliasf in ${BOXS_HOME}/conf/aliases/* ; do
   echo "[+] sourcing $aliasf ... "
   source $aliasf
 done
+
+[ -d ${BOXS_CONF}/completion/zsh ] && fpath=(${BOXS_CONF}/completion/zsh $fpath)
 
 # Plugins
 [ -f ${BOXS_HOME}/scripts/command-not-found.sh ] && source ${BOXS_HOME}/scripts/command-not-found.sh

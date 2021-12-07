@@ -15,6 +15,9 @@
 - 字体在 linux 和 macos 一键安装
   - linux ~/.fonts
   - macos ~/Library/Fonts
+- upload
+  - https://transfer.sh/
+  - 制品库
 
 ## Path Struct
 - etc 配置文件目录

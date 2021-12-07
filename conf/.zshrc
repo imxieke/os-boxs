@@ -1,3 +1,12 @@
+###
+ # @Author: Cloudflying
+ # @Date: 2021-09-19 01:49:42
+ # @LastEditTime: 2021-12-07 13:15:05
+ # @LastEditors: Cloudflying
+ # @Description: 
+ # @FilePath: /.boxs/conf/.zshrc
+### 
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,14 +14,6 @@ if [[ -r "~/.boxs/etc/p10k/p10k-instant-prompt.zsh" ]]; then
   source ~/.boxs/etc/p10k/p10k-instant-prompt.zsh
 fi
 
-###
- # @Author: Cloudflying
- # @Date: 2021-09-19 01:49:42
- # @LastEditTime: 2021-12-06 15:02:12
- # @LastEditors: Cloudflying
- # @Description: 
- # @FilePath: /.boxs/conf/.zshrc
-### 
 
 export ZSH=$HOME/.oh-my-zsh
 # Check zsh load time for debug
@@ -41,22 +42,26 @@ fi
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
 # zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
-# zplug "zdharma-continuum/fast-syntax-highlighting"
+zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "zsh-users/zsh-syntax-highlighting"
-# zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-history-substring-search"
+# 会阻止 zsh 默认的上下选择历史命令记录
 # zplug "marlonrichert/zsh-autocomplete"
 zplug "zsh-users/zsh-completions"
+# 灰色显示历史运行的命令
 zplug "zsh-users/zsh-autosuggestions"
 # zplug "jeffreytse/zsh-vi-mode"
+# 快速跳转至文件夹
 # zplug "agkozak/zsh-z"
-# zplug "supercrabtree/k"
+# like ls command
+zplug "supercrabtree/k"
 zplug "MichaelAquilina/zsh-you-should-use"
-# zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
-# zplug "wfxr/formarks"
-# zplug "Aloxaf/fzf-tab"
+zplug "mafredri/zsh-async"
+zplug "wfxr/formarks"
+zplug "Aloxaf/fzf-tab"
 # zplug "unixorn/fzf-zsh-plugin"
 zplug "chitoku-k/fzf-zsh-completions"
-# zplug "yuki-yano/fzf-preview.zsh"
+zplug "yuki-yano/fzf-preview.zsh"
 zplug "trystan2k/zsh-tab-title"
 zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
