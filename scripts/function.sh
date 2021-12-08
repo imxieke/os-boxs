@@ -88,31 +88,6 @@ brew_offcial()
     git pull
 }
 
-# 设置 macos 系统全局代理
-set_sys_proxy()
-{
-    # http proxy
-    networksetup -setwebproxy Wi-Fi 127.0.0.1 7890
-    networksetup -setwebproxy Ethernet 127.0.0.1 7890
-    # https proxy
-    networksetup -setsecurewebproxy Wi-Fi 127.0.0.1 7890
-    networksetup -setsecurewebproxy Ethernet 127.0.0.1 7890
-    # socket5 proxy
-    networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 7890
-    networksetup -setsocksfirewallproxy Ethernet 127.0.0.1 7890
-}
-
-# 关闭 macos 系统全局代理
-close_sys_proxy()
-{
-    networksetup -setwebproxystate Wi-Fi off
-    networksetup -setwebproxystate Ethernet off
-    networksetup -setsecurewebproxystate Wi-Fi off
-    networksetup -setsecurewebproxystate Ethernet off
-    networksetup -setsocksfirewallproxystate Wi-Fi off
-    networksetup -setsocksfirewallproxystate Ethernet off
-}
-
 extract() {
     if [[ -f $1 ]]; then
         case $1 in
@@ -296,22 +271,6 @@ os_name_get()
   echo ${OS_NAME}
 }
 
-pkg_homebrew(){
-	if [[ ! -f "/usr/local/bin/brew" ]]; then 
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	else
-		echo "Homebrew is installed"
-	fi
-}
-
-pkg_ohmyzsh(){
-	if [[ ! -f  "$HOME/.zshrc" ]]; then
-		sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	else
-		echo "oh-my-zsh is installed"
-	fi
-}
-
 opengate()
 {
   if [[ `is_mac`  == 'true' ]]; then
@@ -447,16 +406,7 @@ wcat()
 
 set_brew_mirrors()
 {
-    git -C "$(brew --repo)" remote set-url origin https://e.coding.net/pkgs/homebrew/brew.git
-    git -C "$(brew --repo homebrew/core)" remote set-url origin https://e.coding.net/pkgs/homebrew/homebrew-core.git
-    git -C "$(brew --repo homebrew/cask)" remote set-url origin https://e.coding.net/pkgs/homebrew/homebrew-cask.git
-    git -C "$(brew --repo homebrew/services)" remote set-url origin https://e.coding.net/pkgs/homebrew/homebrew-services.git
-    git -C "$(brew --repo homebrew/cask-versions)" remote set-url origin https://e.coding.net/pkgs/homebrew/homebrew-cask-versions.git
-    git -C "$(brew --repo homebrew/cask-fonts)" remote set-url origin https://e.coding.net/pkgs/homebrew/homebrew-cask-fonts.git
-    git -C "$(brew --repo homebrew/cask-drivers)" remote set-url origin https://e.coding.net/pkgs/homebrew/homebrew-cask-drivers.git
-    # git branch --set-upstream-to=origin/master master
-	# brew tap homebrew/services https://e.coding.net/pkgs/homebrew/homebrew-services.git
-	# brew tap homebrew/cask https://e.coding.net/pkgs/homebrew/homebrew-cask.git
+
 }
 
 function crypt() {

@@ -24,10 +24,19 @@ local BOXS_HOME=~/.boxs
 local BOXS_CONF=${BOXS_HOME}/conf
 local BOXS_LOGS=${BOXS_HOME}/logs
 
-[ -f ${BOXS_CONF}/.env ] 	 && source ${BOXS_CONF}/.env
+# Config System Environment
+# Darwin or Linux
+if [[ "$(uname -s)" == 'Darwin' ]];then
+    OSNAME='Darwin'
+elif [[ "$(uname -s )" == 'Linux' ]];then
+    OSNAME=$(grep '^ID=' /etc/os-release | grep '^ID=' | awk =F '=' '{print $2}')
+fi
+
+[ -f ${BOXS_CONF}/.env ] && source ${BOXS_CONF}/.env
 
 # 加载自定义可执行文件
 [ -d ${BOXS_HOME}/bin/all ] && export PATH="$PATH:${BOXS_HOME}/bin/all"
+[ -d ~/.bin ] && export PATH="$PATH:~/.bin"
 
 if [[ "${OSNAME}" == 'Darwin' ]]; then
 	[ -d ${BOXS_HOME}/bin/macos ] && export PATH="$PATH:${BOXS_HOME}/bin/macos"
@@ -59,6 +68,11 @@ fi
 [ -d ~/.cargo/bin ] && export PATH="$PATH:~/.cargo/bin"
 [ -d BOXS_HOME/bin ]  && export PATH="$PATH:${BOXS_HOME}/bin"
 
+# Path
+[ -d /usr/local/opt/coreutils/bin ] && export PATH="$PATH:/usr/local/opt/coreutils/bin"
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
+[ -d /usr/local/opt/coreutils/libexec/gnuman ] && export export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export DOCKER_REGISTRY_PREFIX=registry.cn-hongkong.aliyuncs.com/imxieke
 
@@ -76,10 +90,6 @@ export FZF_DEFAULT_COMMAND='fzf'
 export DISABLE_FZF_AUTO_COMPLETION=false
 # alway show quote
 export ZSH_HACKER_QUOTES_ENABLE_WHEN_INTERACTIVE=true
-
-# Config System Environment
-# Darwin or Linux
-export OSNAME=$(uname -s)
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Set Default Editor
@@ -190,35 +200,35 @@ export ZSH_SEVEN_EIGHTHS='⅞'
 # Sources:
 # * http://www.emoticonfun.org/
 
-export em_confused='¯\_(⊙︿⊙)_/¯'
-export em_crying='ಥ_ಥ'
-export em_cute_bear='ʕ•ᴥ•ʔ'
-export em_cute_face='(｡◕‿◕｡)'
-export em_excited='☜(⌒▽⌒)☞'
-export em_fisticuffs='ლ(｀ー´ლ)'
-export em_fliptable='(╯°□°）╯︵ ┻━┻'
-export em_person_flip_table=$em_fliptable
-export em_person_flip_person='(╯°Д°）╯︵/(.□ . \)\'
-export em_table_flip_person='ノ┬─┬ノ ︵ ( \o°o)\'
-export em_person_unflip_table='┬──┬◡ﾉ(° -°ﾉ)'
-export em_happy='ヽ(´▽`)/'
-export em_innocent='ʘ‿ʘ'
-export em_kirby='⊂(◉‿◉)つ'
-export em_lennyface='( ͡° ͜ʖ ͡°)'
-export em_lion='°‿‿°'
-export em_muscleflex='ᕙ(⇀‸↼‶)ᕗ'
-export em_muscleflex2='ᕦ(∩◡∩)ᕤ'
-export em_perky='(`・ω・´)'
-export em_piggy='( ́・ω・`)'
-export em_shrug='¯\_(ツ)_/¯'
-export em_point_right='(☞ﾟヮﾟ)☞'
-export em_point_left='☜(ﾟヮﾟ☜)'
-export em_magic='╰(•̀ 3 •́)━☆ﾟ.*･｡ﾟ'
-export em_shades='(•_•)
-( •_•)>⌐■-■
-(⌐■_■)'
-export em_disapprove='ಠ_ಠ'
-export em_wink='ಠ‿↼'
-export em_facepalm='(－‸ლ)'
-export em_hataz_gon_hate='ᕕ( ᐛ )ᕗ'
-export em_salute='(￣^￣)ゞ'
+# export em_confused='¯\_(⊙︿⊙)_/¯'
+# export em_crying='ಥ_ಥ'
+# export em_cute_bear='ʕ•ᴥ•ʔ'
+# export em_cute_face='(｡◕‿◕｡)'
+# export em_excited='☜(⌒▽⌒)☞'
+# export em_fisticuffs='ლ(｀ー´ლ)'
+# export em_fliptable='(╯°□°）╯︵ ┻━┻'
+# export em_person_flip_table=$em_fliptable
+# export em_person_flip_person='(╯°Д°）╯︵/(.□ . \)\'
+# export em_table_flip_person='ノ┬─┬ノ ︵ ( \o°o)\'
+# export em_person_unflip_table='┬──┬◡ﾉ(° -°ﾉ)'
+# export em_happy='ヽ(´▽`)/'
+# export em_innocent='ʘ‿ʘ'
+# export em_kirby='⊂(◉‿◉)つ'
+# export em_lennyface='( ͡° ͜ʖ ͡°)'
+# export em_lion='°‿‿°'
+# export em_muscleflex='ᕙ(⇀‸↼‶)ᕗ'
+# export em_muscleflex2='ᕦ(∩◡∩)ᕤ'
+# export em_perky='(`・ω・´)'
+# export em_piggy='( ́・ω・`)'
+# export em_shrug='¯\_(ツ)_/¯'
+# export em_point_right='(☞ﾟヮﾟ)☞'
+# export em_point_left='☜(ﾟヮﾟ☜)'
+# export em_magic='╰(•̀ 3 •́)━☆ﾟ.*･｡ﾟ'
+# export em_shades='(•_•)
+# ( •_•)>⌐■-■
+# (⌐■_■)'
+# export em_disapprove='ಠ_ಠ'
+# export em_wink='ಠ‿↼'
+# export em_facepalm='(－‸ლ)'
+# export em_hataz_gon_hate='ᕕ( ᐛ )ᕗ'
+# export em_salute='(￣^￣)ゞ'

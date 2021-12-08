@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# 设置 macos 系统全局代理
+
+_PROXY_HOST='127.0.0.1'
+if [[ -n "$(grep -v '^#' ~/.config/clash/config.yaml | grep 'mixed-port' | awk -F ':' '{print $2}' | awk -F ' ' '{print $1}')" ]]; then
+	_PROXY_PORT=$(grep -v '^#' ~/.config/clash/config.yaml | grep 'mixed-port' | awk -F ':' '{print $2}' | awk -F ' ' '{print $1}')
+elif [[ -n "$(grep -v '^#' ~/.config/clash/config.yaml | grep 'redir-port' | awk -F ':' '{print $2}' | awk -F ' ' '{print $1}')" ]]; then
+	_PROXY_PORT=$(grep -v '^#' ~/.config/clash/config.yaml | grep 'redir-port' | awk -F ':' '{print $2}' | awk -F ' ' '{print $1}')
+else
+	echo "can't check clash proxy port, set it manual
+	set-sys-proxy {host} {port}
+	"
+	_PROXY_CHECK_FAIL=true
+fi
+
+if [[ -n ${_PROXY_CHECK_FAIL} ]]; then
+	if [[ -n "{1}" ]]; then
+		_PROXY_HOST=$1
+	else
+		echo "host can't be null"
+		exit 1
+	fi
+
+	if [[ -n "{2}" ]]; then
+		_PROXY_HOST=$1
+	else
+		echo "host can't be null"
+		exit 1
+	fi
+fi
+
+if [[ "$(uname -s)" == 'Darwin' ]]; then
+	if [[ -n "$(networksetup -listnetworkserviceorder  | grep 'Port: Wi-Fi')" ]]; then
+    	networksetup -setwebproxy Wi-Fi ${_PROXY_HOST} ${_PROXY_PORT}
+    	networksetup -setsecurewebproxy Wi-Fi ${_PROXY_HOST} ${_PROXY_PORT}
+	    networksetup -setsocksfirewallproxy Wi-Fi ${_PROXY_HOST} ${_PROXY_PORT}
+	    echo 'configration all done, enjoy it'
+	elif [[ -n "$(networksetup -listnetworkserviceorder  | grep 'Port: Ethernet')" ]]; then
+	    # http proxy
+	    networksetup -setwebproxy Ethernet ${_PROXY_HOST} ${_PROXY_PORT}
+	    # https proxy
+	    networksetup -setsecurewebproxy Ethernet ${_PROXY_HOST} ${_PROXY_PORT}
+	    # socket5 proxy
+	    networksetup -setsocksfirewallproxy Ethernet ${_PROXY_HOST} ${_PROXY_PORT}
+	    echo 'configration all done, enjoy it'
+	 else
+	 	echo "unknown network device, use networksetup -listnetworkserviceorder check your device and type below command manual
+    	networksetup -setwebproxy {device} ${_PROXY_HOST} ${_PROXY_PORT}
+    	networksetup -setsecurewebproxy {device} ${_PROXY_HOST} ${_PROXY_PORT}
+	    networksetup -setsocksfirewallproxy {device} ${_PROXY_HOST} ${_PROXY_PORT}
+"
+	fi
+else
+	echo 'only for macOS'
+fi

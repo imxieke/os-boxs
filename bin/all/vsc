@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Visual Studio editor
+
+if [[ -f '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code' ]]; then
+	/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code $@
+elif [[ -f /bin/code ]]; then
+	/bin/code $@
+elif [[ -f /usr/bin/code ]]; then
+	/bin/code $@
+elif [[ -f /usr/local/bin/code ]]; then
+	/bin/code $@
+else
+	echo 'not found code in path'
+	exit 1
+fi

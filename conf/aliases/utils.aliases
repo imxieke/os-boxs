@@ -172,13 +172,3 @@ if [[ "${OSNAME}" == 'Darwin' ]]; then
 else
   alias sdu='du -h -d 1 --exclude="/proc" --exclude="/dev"'
 fi
-
-# visual studio code
-if [[ -f '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code' ]]; then
-  alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
-fi
-
-# Sublime short command cli
-if [[ -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' ]]; then
-  alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-fi

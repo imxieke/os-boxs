@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Sublime editor
+
+if [[ -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' ]]; then
+	/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl $@
+elif [[ -f /bin/subl ]]; then
+	/bin/subl $@
+elif [[ -f /usr/bin/subl ]]; then
+	/bin/subl $@
+elif [[ -f /usr/local/bin/subl ]]; then
+	/bin/subl $@
+else
+	echo 'not found subl in path'
+	exit 1
+fi

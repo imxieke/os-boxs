@@ -161,9 +161,22 @@ _sublime()
 	mkdir -p ~/.boxs/conf/backup/sublimetext
 	if [[ "$(uname -s)" == 'Darwin' ]]; then
 		# 不知道是否可以在其他版本使用
-		cp ~/Library/Application\ Support/Sublime\ Text/Local/License.sublime_license ~/.boxs/conf/backup/sublimetext/License.sublime_license-mac-4118
-		cp -fr ~/Library/Application\ Support/Sublime\ Text/Packages/User/ ~/.boxs/conf/backup/sublimetext/conf
-		cp -fr ~/Library/Application\ Support/Sublime\ Text/Packages ~/.boxs/conf/backup/sublimetext/packages
+		if [[ -d ~/Library/Application\ Support/Sublime\ Text\ 3/ ]]; then
+			_SUBL_DIR=~/Library/Application\ Support/Sublime\ Text\ 3/
+		elif [[ -d ~/Library/Application\ Support/Sublime\ Text\ 4/ ]]; then
+			_SUBL_DIR=~/Library/Application\ Support/Sublime\ Text\ 4/
+		elif [[ -d ~/Library/Application\ Support/Sublime\ Text\ Dev/ ]]; then
+			_SUBL_DIR=~/Library/Application\ Support/Sublime\ Text\ Dev/
+		elif [[ -d ~/Library/Application\ Support/Sublime\ Text/ ]]; then
+			_SUBL_DIR=~/Library/Application\ Support/Sublime\ Text/Packages/User/
+		else
+			echo "Can't find Sublime Text in your computer"
+		fi
+
+		if [[ -f ${${_SUBL_DIR}}/Local/License.sublime_license ]]; then
+			cp ${${_SUBL_DIR}}/Local/License.sublime_license ~/.boxs/conf/backup/sublimetext/License.sublime_license-mac-$(sle -v | awk -F ' ' '{print $4}' |  | cut -c 1-2)
+		fi
+		cp -fr ${${_SUBL_DIR}}/Packages/User/ ~/.boxs/conf/backup/sublimetext/conf
 	fi
 }
 

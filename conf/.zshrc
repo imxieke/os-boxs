@@ -57,10 +57,14 @@ zplug "supercrabtree/k"
 zplug "MichaelAquilina/zsh-you-should-use"
 zplug "mafredri/zsh-async"
 zplug "wfxr/formarks"
-zplug "Aloxaf/fzf-tab"
+
+if [[ -n "$(command -v fzf)" ]]; then
+	zplug "Aloxaf/fzf-tab"
+	zplug "chitoku-k/fzf-zsh-completions"
+	zplug "yuki-yano/fzf-preview.zsh"
+fi
+
 # zplug "unixorn/fzf-zsh-plugin"
-zplug "chitoku-k/fzf-zsh-completions"
-zplug "yuki-yano/fzf-preview.zsh"
 zplug "trystan2k/zsh-tab-title"
 zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
@@ -82,7 +86,11 @@ zplug load
 zplug clear
 zplug clean --force
 
-plugins+=(git docker docker-compose fzf vagrant vagrant-prompt)
+plugins+=(git docker docker-compose vagrant vagrant-prompt)
+
+if [[ -n "$(command -v fzf)" ]]; then
+	plugins+=(fzf)
+fi
 
 HISTFILE="$HOME/.zsh_history" # The path to the history file.
 HISTSIZE=50000                                          # The maximum number of events to save in the internal history.
@@ -95,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.boxs/conf/.boxsrc ] && source ~/.boxs/conf/.boxsrc
 
 # quotes 虽然我看不懂 但是不妨碍我装逼
-fortune -s | cowsay
+[ -n "$(command -v fortune )" ] && fortune -s | cowsay
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.boxs/conf/.p10k.zsh ]] || source ~/.boxs/conf/.p10k.zsh
