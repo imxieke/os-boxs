@@ -270,6 +270,11 @@ _init_pkgs()
 	fi
 }
 
+_install_debian()
+{
+	apt install -y --no-install-recommends fortune-mod fortunes fortunes-zh
+}
+
 
 # Setup oh-my-zsh theme and plugin
 _config_ohmyzsh()

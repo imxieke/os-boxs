@@ -68,6 +68,9 @@ fi
 [ -d ~/.cargo/bin ] && export PATH="$PATH:~/.cargo/bin"
 [ -d BOXS_HOME/bin ]  && export PATH="$PATH:${BOXS_HOME}/bin"
 
+[ -d /usr/games ] && [ -z "$(echo $PATH | grep '/usr/games')" ] export PATH="$PATH:/usr/games"
+[ -d /usr/local/games ] && [ -z "$(echo $PATH | grep '/usr/local/games')" ] export PATH="$PATH:/usr/local/games"
+
 # Path
 [ -d /usr/local/opt/coreutils/bin ] && export PATH="$PATH:/usr/local/opt/coreutils/bin"
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
