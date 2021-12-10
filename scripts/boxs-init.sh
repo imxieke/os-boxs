@@ -6,6 +6,8 @@
 # 检测系统环境 及本地代理是否运行
 # 开始部署 boxs 环境
 
+DATEFORMAT=$(date "+%Y%m%d-%H%M%S")
+
 # macOS
 if [[ "$(uname -s)" == 'Darwin' ]];then
 	OSNAME='Darwin'
@@ -13,13 +15,14 @@ elif [[ "$(uname -s)" == 'Linux' ]];then
 	OSNAME=$(grep '^ID=' /etc/os-release | grep '^ID=' | awk =F '=' '{print $2}')
 fi
 
-INIT_DEPS=TOOLS='git'
-
 # mkdir -p ~/.boxs/{backup,opt,logs}
 
 # 存储自定义可执行文件 但是不存储到 boxs
 
 mkdir -p ~/.bin
+
+# deps git zsh neovim ca-certificates curl wget cowsay fortune
+# debian /usr/games/cowsay
 
 # 初始化系统检测
 _init_check()
@@ -128,6 +131,10 @@ _init_brew()
 			brew tap homebrew/cask-fonts https://e.coding.net/pkgs/homebrew/homebrew-cask-fonts.git
 		fi
     	# git branch --set-upstream-to=origin/master master
+
+    	# Remove a formula and its unused dependencies
+    	brew tap beeftornado/rmtree
+
 	fi
 }
 
@@ -180,6 +187,9 @@ _init_pkgs()
 		# grc Colorize logfiles and command output
 		# fortune show quotes
 		brew install cowsay grc fortune
+
+		# ntfs
+		# brew install mounty
 
 		# Media
 		brew install iina qqplayer qqmusic
@@ -260,13 +270,25 @@ _init_pkgs()
 	fi
 }
 
-if [[ ! -d ~/.oh-my-zsh ]]; then
-	git clone --depth 1 https://e.coding.net/pkgs/oh-my-zsh/oh-my-zsh.git ~/.oh-my-zsh
-fi
 
 # Setup oh-my-zsh theme and plugin
 _config_ohmyzsh()
 {
+	if [[ ! -d ~/.oh-my-zsh ]]; then
+		git clone --depth 1 https://e.coding.net/pkgs/oh-my-zsh/oh-my-zsh.git ~/.oh-my-zsh
+	else
+		git -C ~/.oh-my-zsh pull
+	fi
+
+	# 恢复
+	if [[ -f ~/.zshrc ]]; then
+		mv ~/.zshrc ${BAK_DIR}/conf/.zshrc-${DATEFORMAT}
+		ln -sf ~/.boxs/conf/.zshrc ~/.zshrc
+	else
+		# 若不存在则创建软连接
+		ln -sf ~/.boxs/conf/.zshrc ~/.zshrc
+	fi
+
 	if [[ -d ~/.oh-my-zsh ]]; then
 		mkdir -p ~/.boxs/opt
 		# zplug zsh plugin manager
@@ -287,6 +309,14 @@ _config_ohmyzsh()
 	fi
 }
 
+_init_nvim()
+{
+	if [[ -n "$(command -v nvim)" ]]; then
+		if [[ ! - ~/.config/nvim ]]; then
+			ln -sf ~/.boxs/conf/nvim ~/.config/nvim
+		fi
+	fi
+}
 _init_vscode()
 {
 	# Install VSCode extension
@@ -302,6 +332,58 @@ _init_vscode()
 			fi
 		done
 	fi
+}
+
+_config_pkg_source()
+{
+	# Composer
+	# Offcial
+	# https://repo.packagist.org
+	# https://mirrors.cloud.tencent.com/composer/
+	# https://mirrors.aliyun.com/composer/
+	if [[ -n "$(command -v composer)" ]]; then
+		composer config -g repos.packagist composer https://pkgs-composer.pkg.coding.net/storage/composer
+	fi
+
+	# Python pip
+	# Offcial
+	# https://pypi.org/simple/
+	# https://mirrors.bfsu.edu.cn/pypi/
+	# https://pypi.tuna.tsinghua.edu.cn/simple
+	# http://mirrors.cloud.tencent.com/pypi/simple/
+	# https://mirrors.aliyun.com/pypi/simple/
+	if [[ -n "$(command -v pip)" ]]; then
+		pip config set global.index-url https://pkgs-pypi.pkg.coding.net/storage/pypi/simple
+		pip config set install.trusted-host pkgs-pypi.pkg.coding.net
+	fi
+
+	if [[ -n "$(command -v pip2)" ]]; then
+		pip2 config set global.index-url https://pkgs-pypi.pkg.coding.net/storage/pypi/simple
+		pip2 config set install.trusted-host pkgs-pypi.pkg.coding.net
+	fi
+
+	if [[ -n "$(command -v pip3)" ]]; then
+		pip3 config set global.index-url https://pkgs-pypi.pkg.coding.net/storage/pypi/simple
+		pip3 config set install.trusted-host pkgs-pypi.pkg.coding.net
+	fi
+
+	# Offcial
+	# https://registry.npmjs.org/
+	# http://mirrors.cloud.tencent.com/npm/
+	# https://registry.npmmirror.com/
+	# https://r.cnpmjs.org
+	if [[ -n "$(command -v npm)" ]]; then
+		npm config set registry https://pkgs-npm.pkg.coding.net/storage/npm
+	fi
+
+	# Docker
+	# https://pkgs-docker.pkg.coding.net/storage/docker
+
+	if [[ -n "$(command -v gem)" ]]; then
+		gem sources --remove https://rubygems.org/
+		gem sources -a https://mirrors.aliyun.com/rubygems/
+	fi
+
 }
 
 _config_sublime()
@@ -503,10 +585,11 @@ _fetch_script_bin()
 _config()
 {
 	_init_brew
-	_config_ohmyzsh
-	_init_vscode
 	_config_fonts
+	_config_ohmyzsh
+	_init_nvim
 	_config_sublime
+	_init_vscode
 	_fetch_command_not_found_dict
 }
 

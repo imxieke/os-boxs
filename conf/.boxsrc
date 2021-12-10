@@ -107,16 +107,28 @@ export GIT_EDITOR="${EDITOR}"
 
 # Golang env
 if [[ -n $(command -v go) ]]; then
-  mkdir -p ~/.go/bin            # 包含可执行文件，如：编译器，Go 工具
-  mkdir -p ~/.go/src            # 包含源代码构建脚本和标准库的包的完整源代码（Go 是一门开源语言）
-  mkdir -p ~/.go/doc            # 包含示例程序，代码工具，本地文档等
-  mkdir -p ~/.go/lib            # 包含文档模版
-  mkdir -p ~/.go/misc           # 包含与支持 Go 编辑器有关的配置文件以及 cgo 的示例
-  mkdir -p ~/.go/os_arch        # 包含标准库的包的对象文件（.a）
-  mkdir -p ~/.go/cmd            # 包含 Go 和 C 的编译器和命令行脚本
-  export GOPATH="${HOME}/.go"
-  export GOBIN="${GOPATH}/bin"
-  export GOSRC="${GOPATH}/src"
+    mkdir -p ~/.go/bin            # 包含可执行文件，如：编译器，Go 工具
+    mkdir -p ~/.go/src            # 包含源代码构建脚本和标准库的包的完整源代码（Go 是一门开源语言）
+    mkdir -p ~/.go/doc            # 包含示例程序，代码工具，本地文档等
+    mkdir -p ~/.go/lib            # 包含文档模版
+    mkdir -p ~/.go/misc           # 包含与支持 Go 编辑器有关的配置文件以及 cgo 的示例
+    mkdir -p ~/.go/os_arch        # 包含标准库的包的对象文件（.a）
+    mkdir -p ~/.go/cmd            # 包含 Go 和 C 的编译器和命令行脚本
+    export GOPATH="${HOME}/.go"
+    export GOBIN="${GOPATH}/bin"
+    export GOSRC="${GOPATH}/src"
+    # https://mirrors.cloud.tencent.com/go/
+    # sum.golang.org
+    # proxy.golang.org
+    # index.golang.org
+    # 配置 GOPROXY 环境变量
+    # export GOPROXY=https://goproxy.io,direct
+    # 还可以设置不走 proxy 的私有仓库或组，多个用逗号相隔（可选）
+    # export GOPRIVATE=git.mycompany.com,github.com/my/private
+    # Qiniu
+    # export GOPROXY=https://goproxy.cn
+    export GOPROXY=https://mirrors.aliyun.com/goproxy/
+    export GOSUMDB=gosum.io+ce6e7565+AY5qEHUk/qmHc5btzW45JVoENfazw8LielDsaI+lEbq6
 fi
 
 if [[ -d $HOME/.nvm ]]; then
