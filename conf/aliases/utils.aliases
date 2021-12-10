@@ -71,7 +71,7 @@ alias site-mirror="wget -H 'user-agent: Mozilla' -H 'Referer: https://www.google
 # 导出 vscode 拓展
 alias export-vscode-extensions="code --list-extensions | php ~/.config/dotfile/library/function.php vscode_extensions2json"
 alias axel='axel -n 4 -c -k -a'
-alias wget='/usr/local/bin/wget -c --content-disposition --no-check-certificate --user-agent="User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0"'
+alias swget='wget -c --content-disposition --no-check-certificate --user-agent="User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0"'
 alias get='aria2c -c -x 4'
 alias cdduck='cd /Users/imxieke/Library/Group\ Containers/G69SCX94XU.duck/Library/Application\ Support/duck/Volumes/'
 
