@@ -8,6 +8,7 @@
 - oh-my-zsh
 - besttrace
 - autossh
+- 字体打包上传 Coding 制品库
 
 ## TOOD
 - 自动加载当前目录下的 .env 文件 将程序的配置文件加载到系统内

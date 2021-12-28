@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+$image_all_size_lists = shell_exec("docker images | awk -F ' ' '{print $7}'");
+
+$image_all_size_lists = explode("\n", $image_all_size_lists);
+
+$count_size = 0;
+foreach ($image_all_size_lists as $key => $val)
+{
+	if ($val != '')
+	{
+		if (stristr($val, 'MB')) {
+			$val = (int) str_replace('MB', '', $val);
+			// echo "MB: " . $val . PHP_EOL;
+			// var_dump($val);
+			$count_size += $val;
+		}
+		elseif (stristr($val, 'GB')) {
+			$val = (int) str_replace('GB', '', $val);
+			$val = $val * 1000;
+			$count_size += $val;
+			// echo "GB: " . $val . PHP_EOL;
+			// var_dump($val);
+		}
+	}
+}
+
+echo "Total Docker image Size: " . $count_size . " MB" . PHP_EOL ;

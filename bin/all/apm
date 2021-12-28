@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [[ -f /Applications/Atom.app/Contents/Resources/app/apm/bin/apm ]]; then
+	/Applications/Atom.app/Contents/Resources/app/apm/bin/apm $@
+fi

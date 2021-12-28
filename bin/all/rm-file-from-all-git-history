@@ -11,7 +11,7 @@
 [ -z $1 ] && echo 'type file full path please, example path/to/file or path/to/' && exit 1
 
 # rm file from all commit history
-git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $@" --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm -r --cached --ignore-unmatch $@" --prune-empty --tag-name-filter cat -- --all
 
 # force override raw data
 git push origin master --force --all
@@ -20,5 +20,8 @@ git push origin master --force --tags
 # clean and recy Recycle space
 rm -rf .git/refs/original/
 git reflog expire --expire=now --all
+git fsck --full --unreachable
+git repack -A -d
 git gc --prune=now
 git gc --aggressive --prune=now
+git prune

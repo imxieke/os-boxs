@@ -1,7 +1,9 @@
+zmodload zsh/zprof
+# Check zsh load time for debug
 ###
  # @Author: Cloudflying
  # @Date: 2021-09-19 01:49:42
- # @LastEditTime: 2021-12-07 13:15:05
+ # @LastEditTime: 2021-12-28 20:17:42
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/.zshrc
@@ -15,8 +17,6 @@ if [[ -r "~/.boxs/etc/p10k/p10k-instant-prompt.zsh" ]]; then
 fi
 
 export ZSH=$HOME/.oh-my-zsh
-# Check zsh load time for debug
-# zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -40,19 +40,17 @@ fi
 # Make sure to use double quotes
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
-# zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
-# 会阻止 zsh 默认的上下选择历史命令记录
-# zplug "marlonrichert/zsh-autocomplete"
+# # 会阻止 zsh 默认的上下选择历史命令记录
+zplug "marlonrichert/zsh-autocomplete"
 zplug "zsh-users/zsh-completions"
-# 灰色显示历史运行的命令
+# # 灰色显示历史运行的命令
 zplug "zsh-users/zsh-autosuggestions"
-# zplug "jeffreytse/zsh-vi-mode"
-# 快速跳转至文件夹
-# zplug "agkozak/zsh-z"
-# like ls command
+# # 快速跳转至文件夹
+zplug "agkozak/zsh-z"
+# # like ls command
 zplug "supercrabtree/k"
 zplug "MichaelAquilina/zsh-you-should-use"
 zplug "mafredri/zsh-async"
@@ -64,7 +62,7 @@ if [[ -n "$(command -v fzf)" ]]; then
 	zplug "yuki-yano/fzf-preview.zsh"
 fi
 
-# zplug "unixorn/fzf-zsh-plugin"
+zplug "unixorn/fzf-zsh-plugin"
 zplug "trystan2k/zsh-tab-title"
 zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
@@ -81,12 +79,12 @@ if ! zplug check --verbose; then
 fi
 
 # 加载插件
-# zplug load --verbose
-zplug load
-zplug clear
+zplug load --verbose
+# zplug load
+# zplug clear
 zplug clean --force
 
-plugins+=(git docker docker-compose vagrant vagrant-prompt)
+plugins+=(git docker docker-compose vagrant vagrant-prompt tmux)
 
 if [[ -n "$(command -v fzf)" ]]; then
 	plugins+=(fzf)

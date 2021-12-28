@@ -2,7 +2,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-12-03 23:41:53
- # @LastEditTime: 2021-12-07 12:57:40
+ # @LastEditTime: 2021-12-28 20:17:00
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/.boxsrc
@@ -36,7 +36,7 @@ fi
 
 # 加载自定义可执行文件
 [ -d ${BOXS_HOME}/bin/all ] && export PATH="$PATH:${BOXS_HOME}/bin/all"
-[ -d ~/.bin ] && export PATH="$PATH:~/.bin"
+[ -d ~/.bin ] && export PATH="$PATH:${HOME}/.bin"
 
 if [[ "${OSNAME}" == 'Darwin' ]]; then
 	[ -d ${BOXS_HOME}/bin/macos ] && export PATH="$PATH:${BOXS_HOME}/bin/macos"
@@ -44,15 +44,16 @@ elif [[ "${OSNAME}" == 'Linux' ]]; then
 	[ -d ${BOXS_HOME}/bin/linux ] && export PATH="$PATH:${BOXS_HOME}/bin/linux"
 fi
 
-[ -f ${BOXS_HOME}/scripts/aliases ] && source ${BOXS_HOME}/scripts/aliases
 [ -f ${BOXS_HOME}/scripts/function.sh ] && source ${BOXS_HOME}/scripts/function.sh
 [ -f ${BOXS_HOME}/scripts/macos-build-env-conf.sh ] && source ${BOXS_HOME}/scripts/macos-build-env-conf.sh
 
 # 加载自定义 aliases
-for aliasf in ${BOXS_HOME}/conf/aliases/* ; do
-  echo "[+] sourcing $aliasf ... "
-  source $aliasf
-done
+echo "[+] sourcing aliases ... "
+[ -f ${BOXS_HOME}/conf/aliases ] && source ${BOXS_HOME}/conf/aliases
+# for aliasf in ${BOXS_HOME}/conf/aliases/* ; do
+  # echo "[+] sourcing $aliasf ... "
+  # source $aliasf
+# done
 
 # [ -d ${BOXS_CONF}/completion/zsh ] && fpath=(${BOXS_CONF}/completion/zsh $fpath)
 
@@ -60,12 +61,17 @@ done
 [ -f ${BOXS_HOME}/scripts/command-not-found.sh ] && source ${BOXS_HOME}/scripts/command-not-found.sh
 
 if [[ -f '/usr/local/bin/brew' ]]; then
-    # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/bottles"
+    # aliyun 更新速度慢
+    export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cloud.tencent.com/homebrew-bottles/bottles"
     # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
     # export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+    # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 fi
 
-[ -d ~/.cargo/bin ] && export PATH="$PATH:~/.cargo/bin"
+# PHP Composer
+[ -d ~/.composer/vendor/bin ] && export PATH="$PATH:${HOME}/.composer/vendor/bin"
+
+[ -d ~/.cargo/bin ] && export PATH="$PATH:${HOME}/.cargo/bin"
 [ -d BOXS_HOME/bin ]  && export PATH="$PATH:${BOXS_HOME}/bin"
 
 [ -d /usr/games ] && [ -z "$(echo $PATH | grep '/usr/games')" ] && export PATH="$PATH:/usr/games"
@@ -120,6 +126,7 @@ if [[ -n $(command -v go) ]]; then
     export GOPATH="${HOME}/.go"
     export GOBIN="${GOPATH}/bin"
     export GOSRC="${GOPATH}/src"
+    export PATH="$PATH:$GOBIN"
     # https://mirrors.cloud.tencent.com/go/
     # sum.golang.org
     # proxy.golang.org
@@ -134,14 +141,6 @@ if [[ -n $(command -v go) ]]; then
     export GOSUMDB=gosum.io+ce6e7565+AY5qEHUk/qmHc5btzW45JVoENfazw8LielDsaI+lEbq6
 fi
 
-if [[ -d $HOME/.nvm ]]; then
-	export NVM_DIR="$HOME/.nvm"
-	# This loads nvm
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-	# This loads nvm bash_completion
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-fi
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
@@ -152,98 +151,3 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
-
-# emoji
-export ZSH_TICK='✔'
-export ZSH_CROSS='✖'
-export ZSH_STAR='★'
-export ZSH_SQUARE='▇'
-export ZSH_SQUARE_SMALL='◻'
-export ZSH_SQUARE_SMALL_FILLED='◼'
-export ZSH_PLAY='▶'
-export ZSH_CIRCLE='◯'
-export ZSH_CIRCLE_FILLED='◉'
-export ZSH_CIRCLE_DOTTED='◌'
-export ZSH_CIRCLE_DOUBLE='◎'
-export ZSH_CIRCLE_CIRCLE='ⓞ'
-export ZSH_CIRCLE_CROSS='ⓧ'
-export ZSH_CIRCLE_PIPE='Ⓘ'
-export ZSH_CIRCLE_QUESTION_MARK='?⃝'
-export ZSH_BULLET='●'
-export ZSH_DOT='․'
-export ZSH_LINE='─'
-export ZSH_ELLIPSIS='…'
-export ZSH_POINTER='❯'
-export ZSH_POINTER_SMALL='›'
-export ZSH_INFO='ℹ'
-export ZSH_WARNING='⚠'
-export ZSH_HAMBURGER='☰'
-export ZSH_SMILEY='㋡'
-export ZSH_MUSTACHE='෴'
-export ZSH_HEART='♥'
-export ZSH_ARROW_UP='↑'
-export ZSH_ARROW_DOWN='↓'
-export ZSH_ARROW_LEFT='←'
-export ZSH_ARROW_RIGHT='→'
-export ZSH_RADIO_ON='◉'
-export ZSH_RADIO_OFF='◯'
-export ZSH_CHECKBOX_ON='☒'
-export ZSH_CHECKBOX_OFF='☐'
-export ZSH_CHECKBOX_CIRCLE_ON='ⓧ'
-export ZSH_CHECKBOX_CIRCLE_OFF='Ⓘ'
-export ZSH_QUESTION_MARK_PREFIX='?'
-export ZSH_ONE_HALF='½'
-export ZSH_ONE_THIRD='⅓'
-export ZSH_ONE_QUARTER='¼'
-export ZSH_ONE_FIFTH='⅕'
-export ZSH_ONE_SIXTH='⅙'
-export ZSH_ONE_SEVENTH='⅐'
-export ZSH_ONE_EIGHTH='⅛'
-export ZSH_ONE_NINTH='⅑'
-export ZSH_ONE_TENTH='⅒'
-export ZSH_TWO_THIRDS='⅔'
-export ZSH_TWO_FIFTHS='⅖'
-export ZSH_THREE_QUARTERS='¾'
-export ZSH_THREE_FIFTHS='⅗'
-export ZSH_THREE_EIGHTHS='⅜'
-export ZSH_FOUR_FIFTHS='⅘'
-export ZSH_FIVE_SIXTHS='⅚'
-export ZSH_FIVE_EIGHTHS='⅝'
-export ZSH_SEVEN_EIGHTHS='⅞'
-
-# contains numerous variables for common ascii emojis
-# Sources:
-# * http://www.emoticonfun.org/
-
-# export em_confused='¯\_(⊙︿⊙)_/¯'
-# export em_crying='ಥ_ಥ'
-# export em_cute_bear='ʕ•ᴥ•ʔ'
-# export em_cute_face='(｡◕‿◕｡)'
-# export em_excited='☜(⌒▽⌒)☞'
-# export em_fisticuffs='ლ(｀ー´ლ)'
-# export em_fliptable='(╯°□°）╯︵ ┻━┻'
-# export em_person_flip_table=$em_fliptable
-# export em_person_flip_person='(╯°Д°）╯︵/(.□ . \)\'
-# export em_table_flip_person='ノ┬─┬ノ ︵ ( \o°o)\'
-# export em_person_unflip_table='┬──┬◡ﾉ(° -°ﾉ)'
-# export em_happy='ヽ(´▽`)/'
-# export em_innocent='ʘ‿ʘ'
-# export em_kirby='⊂(◉‿◉)つ'
-# export em_lennyface='( ͡° ͜ʖ ͡°)'
-# export em_lion='°‿‿°'
-# export em_muscleflex='ᕙ(⇀‸↼‶)ᕗ'
-# export em_muscleflex2='ᕦ(∩◡∩)ᕤ'
-# export em_perky='(`・ω・´)'
-# export em_piggy='( ́・ω・`)'
-# export em_shrug='¯\_(ツ)_/¯'
-# export em_point_right='(☞ﾟヮﾟ)☞'
-# export em_point_left='☜(ﾟヮﾟ☜)'
-# export em_magic='╰(•̀ 3 •́)━☆ﾟ.*･｡ﾟ'
-# export em_shades='(•_•)
-# ( •_•)>⌐■-■
-# (⌐■_■)'
-# export em_disapprove='ಠ_ಠ'
-# export em_wink='ಠ‿↼'
-# export em_facepalm='(－‸ლ)'
-# export em_hataz_gon_hate='ᕕ( ᐛ )ᕗ'
-# export em_salute='(￣^￣)ゞ'

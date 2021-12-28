@@ -7,6 +7,9 @@
 *.log
 *.DS_Store
 *.mmdb
+*.ttf
+*.ttc
+
 /.env.conf
 /conf/nvim/plugged/*
 /opt

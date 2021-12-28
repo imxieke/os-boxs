@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ -f "$(command -v ${1})" ]]; then
+	sle "$(command -v ${1})"
+elif [[ -f ~/.boxs/bin/all/${1} ]]; then
+	sle ~/.boxs/bin/all/${1}
+elif [[ ~/.boxs/bin/linux/${1} ]]; then
+	sle ~/.boxs/bin/linux/${1}
+elif [[ ~/.boxs/bin/macos/${1} ]]; then
+	sle ~/.boxs/bin/macos/${1}
+else
+	echo "can't find ${1} in your path"
+fi

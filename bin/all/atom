@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [[ -f /Applications/Atom.app/Contents/Resources/app/atom.sh ]]; then
+	/Applications/Atom.app/Contents/Resources/app/atom.sh $@
+elif [[ -f /usr/local/bin/atom ]]; then
+	/usr/local/bin/atom $@
+fi
