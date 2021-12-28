@@ -9,6 +9,7 @@
 *.mmdb
 *.ttf
 *.ttc
+*.otf
 
 /.env.conf
 /conf/nvim/plugged/*
