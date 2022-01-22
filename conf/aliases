@@ -1,7 +1,7 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-12-28 20:01:25
- # @LastEditTime: 2021-12-28 20:02:29
+ # @LastEditTime: 2022-01-20 00:59:22
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/aliases
@@ -9,7 +9,8 @@
 
 # Brew
 alias bs='brew search'
-alias bi='brew install'
+alias ba='brew install'
+alias bi='brew info'
 alias bu='brew update'
 alias bU='brew upgrade'
 alias br='brew uninstall'
@@ -116,14 +117,18 @@ alias cls='exa -l --git --icons --classify --group-directories-first --time-styl
 alias gls='cls --git-ignore'
 alias ':q'="exit"
 alias gdu='grc du -h'
-  alias sdu='/usr/bin/du -h -d 1 -I ~/Library -I /Applications -I /dev'
+alias sdu='/usr/bin/du -h -d 1 -I ~/Library -I /Applications -I /dev'
 alias ssh="ssh -o ServerAliveInterval=60"
 
+EDITOR=nvim
 alias e=${EDITOR}
 alias vi=${EDITOR}
 alias vim=${EDITOR}
 alias nano=${EDITOR}
 alias emacs=${EDITOR}
+
+# GNU Command
+[ -n "$(command -v gsed)" ] && alias sed='gsed'
 
 alias history-top='history | awk -F ' ' '{print $2}' | sort | uniq -c | sort -n -r  | head -n 10'
 alias ezsh="e ~/.zshrc"
@@ -150,8 +155,8 @@ alias cpr='composer require -vvv'
 alias cps='composer search'
 alias cpr73='php73 /usr/local/bin/composer require -vvv'
 alias vidotfile='subl ~/.config/dotfile'
-alias viclash='subl ~/.config/clash'
-alias visubl='subl ~/Library/Application\ Support/Sublime\ Text'
+alias viclash='sle ~/.config/clash'
+alias visubl='sle ~/Library/Application\ Support/Sublime\ Text'
 alias aria2web='open http://127.0.0.1:6801'
 alias site-mirror="wget -H 'user-agent: Mozilla' -H 'Referer: https://www.google.com/search?q=coin' -U 'Mozilla' --recursive --page-requisites --no-parent --convert-links --tries=3 --continue --timeout=3 --no-check-certificate"
 # 导出 vscode 拓展
@@ -195,24 +200,13 @@ if [[ -f ~/.acme.sh/acme.sh ]]; then
   export LE_WORKING_DIR="~/.acme.sh"
 fi
 
-# MAPP Pro
-if [[ -d '/Applications/MAMP/bin/php' ]]; then
-  alias php56="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php5.6)/bin/php"
-  alias php70="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.0)/bin/php"
-  alias php71="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.1)/bin/php"
-  alias php72="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.2)/bin/php"
-  alias php73="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.3)/bin/php"
-  alias php74="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php7.4)/bin/php"
-  alias php80="/Applications/MAMP/bin/php/$(ls /Applications/MAMP/bin/php | grep php8.0)/bin/php"
-fi
-
 # Atom short command cli
-# if [[ -f '/Applications/Atom.app/Contents/Resources/app/atom.sh' ]]; then
-  # alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
-  # alias apm="/Applications/Atom.app/Contents/Resources/app/apm/bin/apm"
-  # alias anode="/Applications/Atom.app/Contents/Resources/app/apm/bin/node"
-  # alias anpm="/Applications/Atom.app/Contents/Resources/app/apm/bin/npm"
-# fi
+if [[ -f '/Applications/Atom.app/Contents/Resources/app/atom.sh' ]]; then
+  alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
+  alias apm="/Applications/Atom.app/Contents/Resources/app/apm/bin/apm"
+  alias anode="/Applications/Atom.app/Contents/Resources/app/apm/bin/node"
+  alias anpm="/Applications/Atom.app/Contents/Resources/app/apm/bin/npm"
+fi
 
 # HBuildX short command cli
 if [[ -f '/Applications/HBuilderX.app/Contents/MacOS/cli' ]]; then

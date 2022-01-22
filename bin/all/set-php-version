@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+VERSION=$1
+PHP_VERS="5.6 7.4 8.0 8.1"
+
+if [ -z "${VERSION}" ];then
+	echo "avaiable versions: ${PHP_VERS}"
+	exit 1
+else
+	if [[ -d "/usr/local/opt/php@${VERSION}/bin" ]]; then
+		gsed -i "s#PHP_VERSION=.*#PHP_VERSION=${VERSION}#g" ~/.env
+		echo "PHP Version Change Success, reload SHELL $SHELL "
+	else
+		echo "Unknow PHP Version: ${VERSION} or local machine not install php ${VERSION}"
+	fi
+fi
+
+zsh

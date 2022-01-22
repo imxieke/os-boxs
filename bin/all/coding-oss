@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Coding 制品库文件上传
+
+API="https://pkgs-generic.pkg.coding.net/mirrors/oss"
+USER="oss-1640949814382"
+PWD="1f6adea5c628a8b845d0e0acc634bbf63d03d388"
+
+ACT=$1
+FILE=$2
+SAVENAME=$3
+# SAVENAME=$(echo $SAVENAME | sed "s#\.\/##g")
+VERSION='latest'
+
+[ -z "${FILE}" ] && echo "please special file path" && exit 1
+
+_upload()
+{
+	[ -z "${SAVENAME}" ] && echo "please special file save name" && exit 1
+	curl -T ${FILE} -u ${USER}:${PWD} "${API}/${SAVENAME}?version=${VERSION}"
+}
+
+_fetch()
+{
+	curl -fL -u ${USER}:${PWD} "${API}/${FILE}?version=${VERSION}"
+}
+
+_del()
+{
+	curl -X DELETE -u ${USER}:${PWD} "${API}/${FILE}?version=${VERSION}"
+}
+
+case $ACT in
+	up )
+		_upload $@
+		;;
+	pull )
+		_fetch $@
+		;;
+	del )
+		_del $@
+		;;
+	* )
+		echo "unkwno $1 , Usage: $0 up pull del"
+		;;
+esac

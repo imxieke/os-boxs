@@ -2,11 +2,20 @@
 ###
  # @Author: Cloudflying
  # @Date: 2021-12-03 23:35:43
- # @LastEditTime: 2021-12-03 23:46:22
+ # @LastEditTime: 2022-01-13 18:36:47
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/scripts/macos-build-env-conf.sh
 ### 
+
+if [[ -d '/usr/local/opt/php@5.6/bin' ]]; then
+  if [[ "${PHP_VERSION}" == 5.6 ]]; then
+      export PATH="/usr/local/opt/php@5.6/bin:$PATH"
+      export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
+  fi
+  export LDFLAGS="$LDFLAGS -L/usr/local/opt/php@5.6/lib"
+  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/php@5.6/include"
+fi
 
 if [[ -d '/usr/local/opt/php@7.3/bin' ]]; then
   if [[ "${PHP_VERSION}" == 7.3 ]]; then
@@ -33,6 +42,25 @@ if [[ -d '/usr/local/opt/php@8.0/bin' ]]; then
   fi
   export LDFLAGS="$LDFLAGS -L/usr/local/opt/php@8.0/lib"
   export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/php@8.0/include"
+fi
+
+
+if [[ -d '/usr/local/opt/php@8.1/bin' ]]; then
+  if [[ "${PHP_VERSION}" == 8.1 ]]; then
+      export PATH="/usr/local/opt/php@8.1/bin:$PATH"
+      export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
+  fi
+  export LDFLAGS="$LDFLAGS -L/usr/local/opt/php@8.1/lib"
+  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/php@8.1/include"
+fi
+
+if [[ -d '/usr/local/opt/php@8.2/bin' ]]; then
+  if [[ "${PHP_VERSION}" == 8.2 ]]; then
+      export PATH="/usr/local/opt/php@8.2/bin:$PATH"
+      export PATH="/usr/local/opt/php@8.2/sbin:$PATH"
+  fi
+  export LDFLAGS="$LDFLAGS -L/usr/local/opt/php@8.2/lib"
+  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/php@8.2/include"
 fi
 
 if [[ -d '/usr/local/opt/mariadb@10.2' ]]; then

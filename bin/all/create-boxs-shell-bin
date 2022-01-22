@@ -66,6 +66,7 @@ if [[ -d "${SAVETO}" ]];then
         # fix permission
         chmod +x $_BIN_NAME
         echo "Script ${_BIN_NAME} create success in ${SAVETO}${_BIN_NAME}"
+        sle ${SAVETO}${_BIN_NAME}
     else
         echo 'type script type(language) please'
     fi

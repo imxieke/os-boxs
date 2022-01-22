@@ -3,7 +3,7 @@ zmodload zsh/zprof
 ###
  # @Author: Cloudflying
  # @Date: 2021-09-19 01:49:42
- # @LastEditTime: 2021-12-28 20:17:42
+ # @LastEditTime: 2022-01-17 19:41:13
  # @LastEditors: Cloudflying
  # @Description: 
  # @FilePath: /.boxs/conf/.zshrc
@@ -81,8 +81,8 @@ fi
 # 加载插件
 zplug load --verbose
 # zplug load
-# zplug clear
-zplug clean --force
+zplug clear
+# zplug clean --force
 
 plugins+=(git docker docker-compose vagrant vagrant-prompt tmux)
 

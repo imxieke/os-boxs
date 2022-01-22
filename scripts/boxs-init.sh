@@ -91,6 +91,8 @@ _init_check()
 		fi
 	fi
 
+	[ ! -d /usr/local/etc/supervisor.d ] && ln -s ~/.boxs/conf/supervisor /usr/local/etc/supervisor.d
+
 	chmod -R +x ~/.bin 
 	chmod -R +x ~/.boxs/bin
 	# ~/.boxs/bin/all/set-sys-proxy
@@ -337,7 +339,7 @@ _init_brew_pkgs()
 	# grc Colorize logfiles and command output
 	# fortune show quotes
 	# fzf Command-line fuzzy finder written in Go
-	brew install cowsay grc fortune procs fzf
+	brew install cowsay grc fortune procs fzf supervisor
 
 	# ntfs
 	# brew install mounty
@@ -364,7 +366,11 @@ _init_brew_pkgs()
 	brew install wget axel free-download-manager aria2 motrix
 
 	# Programming language
-	brew install php php@7.4 php@8.0 go python dotnet kotlin node@14 openjdk
+	brew install shivammathur/php/php shivammathur/php/php@5.6 shivammathur/php/php@7.4 shivammathur/php/php@8.0 go python dotnet kotlin node@14 openjdk
+	brew install shivammathur/extensions/amqp@7.4 shivammathur/extensions/imagick@7.4 shivammathur/extensions/imap@7.4 shivammathur/extensions/memcache@7.4 shivammathur/extensions/memcached@7.4 shivammathur/extensions/mongodb@7.4 shivammathur/extensions/msgpack@7.4 shivammathur/extensions/protobuf@7.4 shivammathur/extensions/rdkafka@7.4 shivammathur/extensions/redis@7.4 shivammathur/extensions/ssh2@7.4 shivammathur/extensions/swoole@7.4 shivammathur/extensions/vips@7.4 shivammathur/extensions/xlswriter@7.4 shivammathur/extensions/yaml@7.4 shivammathur/extensions/zmq@7.4
+	brew install shivammathur/extensions/amqp@8.0 shivammathur/extensions/imagick@8.0 shivammathur/extensions/imap@8.0 shivammathur/extensions/memcache@8.0 shivammathur/extensions/memcached@8.0 shivammathur/extensions/mongodb@8.0 shivammathur/extensions/msgpack@8.0 shivammathur/extensions/protobuf@8.0 shivammathur/extensions/rdkafka@8.0 shivammathur/extensions/redis@8.0 shivammathur/extensions/ssh2@8.0 shivammathur/extensions/swoole@8.0 shivammathur/extensions/vips@8.0 shivammathur/extensions/xlswriter@8.0 shivammathur/extensions/yaml@8.0 shivammathur/extensions/zmq@8.0
+	brew install shivammathur/extensions/amqp@8.1 shivammathur/extensions/imagick@8.1 shivammathur/extensions/imap@8.1 shivammathur/extensions/memcache@8.1 shivammathur/extensions/memcached@8.1 shivammathur/extensions/mongodb@8.1 shivammathur/extensions/msgpack@8.1 shivammathur/extensions/protobuf@8.1 shivammathur/extensions/rdkafka@8.1 shivammathur/extensions/redis@8.1 shivammathur/extensions/ssh2@8.1 shivammathur/extensions/swoole@8.1 shivammathur/extensions/vips@8.1 shivammathur/extensions/xlswriter@8.1 shivammathur/extensions/yaml@8.1 shivammathur/extensions/zmq@8.1
+
 	# Options
 	# brew install swift ruby@2.7 rust kotlin node@16
 	# brew install --cask dotnet dotnet-sdk
@@ -374,7 +380,8 @@ _init_brew_pkgs()
 	brew install neovim visual-studio-code sublime-text android-studio
 
 	# Graphical client for Git version control
-	brew install sourcetree
+	# sourcetree replace with git cli
+	# brew install sourcetree
 
 	# Web Browser
 	brew install google-chrome firefox-developer-edition chromium microsoft-edge tor-browser
@@ -391,8 +398,8 @@ _init_brew_pkgs()
 	# export windows package file lists (.exe)
 	brew install innoextract
 
-	# Markdown
-	brew install mdv mdp
+	# Documents && Markdown
+	brew install mdv mdp koodo-reader
 
 	# Version Control
 	brew install gh git svn git-svn
@@ -788,6 +795,20 @@ _fetch_script_bin()
     fi
 }
 
+# 获取二进制文件
+_fetch_bin()
+{
+	if [[ ! -f ~/.bin/aircast ]];then
+    	echo "==> Fetch AirCast"
+    	curl -sL https://raw.githubusercontent.com/philippe44/AirConnect/master/bin/aircast-osx-multi --output ~/.bin/aircast
+	fi
+
+	if [[ ! -f ~/.bin/airupnp ]]; then
+    	echo "==> Fetch AirUpnp"
+    	curl -sL https://raw.githubusercontent.com/philippe44/AirConnect/master/bin/airupnp-osx-multi --output ~/.bin/airupnp
+	fi
+}
+
 _init()
 {
 	# 初始化检查
@@ -813,6 +834,7 @@ _install_third_party_pkgs()
 	_install_doggo
 	_install_nali_go
 	_fetch_script_bin
+	_fetch_bin
 }
 
 _init
